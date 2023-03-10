@@ -8,7 +8,7 @@ function LoginPage() {
   }
   return (
     <div>
-      <img src="our-image-url.jpg" alt="our Image" />
+      <img src="our-image-url.jpg" alt="our" />
       <form onSubmit={handleSubmit}>
         <label htmlFor="Email">Email:</label>
         <input
@@ -29,5 +29,6 @@ function LoginPage() {
       <a href="#">Forgot Password?</a>
     </div>
   );
+  
 }
 export default LoginPage;
