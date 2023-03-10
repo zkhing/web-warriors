@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import "./Home.css";
-import logo from "./logo.svg";
+
 
 export function Home() {
 	const [message, setMessage] = useState("Loading...");
@@ -26,12 +25,6 @@ export function Home() {
 	return (
 		<main role="main">
 			<div>
-				<img
-					className="logo"
-					data-qa="logo"
-					src={logo}
-					alt="Just the React logo"
-				/>
 				<h1 className="message" data-qa="message">
 					{message}
 				</h1>
