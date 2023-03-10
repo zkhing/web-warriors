@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+
 function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle login logic here
-  }
+  };
+
   return (
     <div>
       <img src="our-image-url.jpg" alt="our" />
@@ -26,9 +28,9 @@ function LoginPage() {
         />
         <button type="Submit">Sign In</button>
       </form>
-      <a href="#">Forgot Password?</a>
+      {/* <a href="#">Forgot Password?</a> */}
     </div>
   );
-  
 }
+
 export default LoginPage;
