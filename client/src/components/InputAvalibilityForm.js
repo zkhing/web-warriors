@@ -87,7 +87,40 @@ const InputAvalibilityForm = () => {
 							</Row>
 						</Form>
 
-
+						<table className="table table-striped mt-5">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Date</th>
+									<th scope="col">From</th>
+									<th scope="col">To</th>
+									<th scope="col">Duration</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>01/01/2023</td>
+									<td>12:00</td>
+									<td>13:00</td>
+									<td>00:30 min</td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>01/01/2023</td>
+									<td>12:00</td>
+									<td>13:00</td>
+									<td>00:45 min</td>
+								</tr>
+								<tr>
+									<th scope="row">3</th>
+									<td>01/01/2023</td>
+									<td>12:00</td>
+									<td>13:00</td>
+									<td>60:00 min</td>
+								</tr>
+							</tbody>
+						</table>
 					</Col>
 				</Row>
 			</Container>
