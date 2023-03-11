@@ -1,67 +1,129 @@
-import React, {useState} from "react";
+import { useState } from "react";
+import { Container, Col, Row, Button, Form, Card } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const InputAvalibilityForm = () => {
- const [date, setDate] = useState('')
- const [timeFrom, setTimeFrom] = useState('')
- const [timeTo, setTimeTo] = useState('')
- const [error, setError] = useState(null)
+	const [date, setDate] = useState("");
+	const [fromTime, setFromTime] = useState("");
+	const [toTime, setToTime] = useState("");
 
- 
-  
-const handleSubmit = async (e) => {
-   e.preventDefault()
-   const response = await fetch('/api/', {
-     method: 'POST',
-     body: JSON.stringify(Availabilities),
-     headers: {
-       'Content-Type': 'application/json'
-     }
-   })
-   const json = await response.json()
+	const handleSubmit = (event) => {
+		event.preventDefault();
+	};
 
-   if (!response.ok) {
-     setError(json.error)
-   }
-   if (response.ok) {
-     setDate("")
-     setTimeFrom('')
-     setTimeTo('')
+	return (
+		<>
+			<Container className="container-two bg-secondary">
+				<Row>
+					<Col className="col-sm-3">
+						<Card>
+							<Card.Img
+								className="img-thumbnail"
+								src="https://media.licdn.com/dms/image/C4D03AQGTh1-xzMWhPQ/profile-displayphoto-shrink_800_800/0/1544442059256?e=2147483647&v=beta&t=mmATpgPPWJy0ZHPSe0VtuleYA1dwt9Pt-nRrkKOjXUI"
+							/>
+							<Card.Text className="text-center mt-2">
+								Name: Zaw Khing
+							</Card.Text>
+							<Button className="bg-danger">Log out</Button>
+						</Card>
+					</Col>
 
-     console.log('My avalabilities', json)
-   }
+					<Col>
+						<Form onSubmit={handleSubmit} className="form-input">
+							<Card.Title className="text-white text-center my-3">
+								Study-buddies Booking
+							</Card.Title>
 
- }
+							<Row>
+								<Col>
+									<Form.Group controlId="formDate">
+										<Form.Label>Available Date</Form.Label>
+										<Form.Control
+											type="date"
+											value={date}
+											min="2023-01-01"
+											max="2023-12-31"
+											onChange={(e) => setDate(e.target.value)}
+										/>
+									</Form.Group>
+								</Col>
 
- return (
-   <form className="" onSubmit={handleSubmit}> 
-     <h3>My Availability</h3>
+								<Col>
+									<Form.Group>
+										<Form.Label>From</Form.Label>
+										<Form.Control
+											type="time"
+											value={fromTime}
+											min="17:00"
+											max="23:00"
+											required
+											onChange={(e) => setFromTime(e.target.value)}
+										/>
+									</Form.Group>
+								</Col>
 
-     <label>DATE:</label>
-     <input 
-       type="date" 
-       onChange={(e) => setDate(e.target.value)} 
-       value=""
-     />
+								<Col>
+									<Form.Group>
+										<Form.Label>To</Form.Label>
+										<Form.Control
+											type="time"
+											value={toTime}
+											min="17:00"
+											max="23:00"
+											required
+											onChange={(e) => setToTime(e.target.value)}
+										/>
+									</Form.Group>
+								</Col>
 
-     <label>FROM:</label>
-     <input 
-       type="time" 
-       onChange={(e) => setTimeFrom(e.target.value)} 
-       value=""
-     />
+								{/* <Link to="/" element={<Login />}> */}
+								<Button
+									className="d-grid gap-2 col-6 mx-auto mt-4"
+									type="submit"
+								>
+									Submit
+								</Button>
+								{/* </Link> */}
+							</Row>
+						</Form>
 
-     <label>TO:</label>
-     <input 
-       type="time" 
-       onChange={(e) => setTimeTo(e.target.value)} 
-       value="" 
-     />
 
-     <button>SUBMIT</button>
-     {error && <div className="error">{error}</div>}
-   </form>
-   )
+					</Col>
+				</Row>
+			</Container>
+		</>
+	);
+};
 
-}
+export default InputAvalibilityForm;
+//  const [date, setDate] = useState('')
+//  const [timeFrom, setTimeFrom] = useState('')
+//  const [timeTo, setTimeTo] = useState('')
+//  const [error, setError] = useState(null)
 
-export default InputAvalibilityForm
+// const handleSubmit = async (e) => {
+//    e.preventDefault()
+//    const response = await fetch('/api/', {
+//      method: 'POST',
+//      body: JSON.stringify(Availabilities),
+//      headers: {
+//        'Content-Type': 'application/json'
+//      }
+//    })
+//    const json = await response.json()
+
+//    if (!response.ok) {
+//      setError(json.error)
+//    }
+//    if (response.ok) {
+//      setDate("")
+//      setTimeFrom('')
+//      setTimeTo('')
+
+//      console.log('My avalabilities', json)
+//    }
+
+//  }
+
+//  return (
+//    )
