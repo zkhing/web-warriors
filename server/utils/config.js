@@ -10,6 +10,7 @@ export default {
 function createDatabaseUrl() {
 
 	if (process.env.DATABASE_URL) {
+		console.log(process.env.DATABASE_URL);
 		return process.env.DATABASE_URL;
 	}
 	console.log('HERE =======>', process.env)

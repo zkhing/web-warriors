@@ -6,6 +6,7 @@ import config from "./utils/config";
 import logger from "./utils/logger";
 
 const server = http.createServer(app);
+require("dotenv").config();
 
 server.on("listening", () => {
 	const addr = server.address();
