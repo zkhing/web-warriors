@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import InputAvalibilityForm from "./components/InputAvalibilityForm";
-
+import "./components/InputAvailabilityForm.css";
 import About from "./pages/About";
 import Home from "./pages/Home";
 
