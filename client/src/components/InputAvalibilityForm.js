@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from "react";
 
 const InputAvalibilityForm = () => {
  const [date, setDate] = useState('')
@@ -10,9 +10,6 @@ const InputAvalibilityForm = () => {
   
 const handleSubmit = async (e) => {
    e.preventDefault()
-}
- 
-
    const response = await fetch('/api/', {
      method: 'POST',
      body: JSON.stringify(Availabilities),
@@ -65,8 +62,6 @@ const handleSubmit = async (e) => {
    </form>
    )
 
- 
-
-
+}
 
 export default InputAvalibilityForm
