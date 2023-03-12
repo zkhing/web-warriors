@@ -1,0 +1,12 @@
+body {
+  margin: 3em;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color:#edf2f4 ;
+}
+
+/* --------login------- */
+.container{
+  padding: 2em;
+  max-width: 850px;
+}
