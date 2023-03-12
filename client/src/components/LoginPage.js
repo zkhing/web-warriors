@@ -1,10 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Col, Row, Button, Form, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+// async function fetchPagesAPI() {
+// 	const page = await fetch("http://localhost:3000/api/user");
+// 	const response = await page.json();
+// 	setEmail(response);
+// }
 
 function LoginPage() {
 	const [email, setEmail] = useState("");
 	// const [password, setPassword] = useState("");
+
+	const url = "http://localhost:3000/api/users/:username";
+	useEffect(() => {
+		fetch(url).then((res) =>
+			res.json().then((data) =>
+				//console.log(data)
+				setEmail(data)
+			)
+		);
+	}, []);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -48,12 +64,9 @@ function LoginPage() {
                 />
               </Form.Group> */}
 
-								<Button
-									className="d-grid gap-2 col-6 mx-auto mt-3"
-									type="button"
-								>
-									Log in
-								</Button>						
+							<Button className="d-grid gap-2 col-6 mx-auto mt-3" type="button">
+								Log in
+							</Button>
 						</Form>
 					</Col>
 				</Row>
@@ -63,7 +76,7 @@ function LoginPage() {
 }
 export default LoginPage;
 
-    /* <div>
+/* <div>
       <img src="our-image-url.jpg" alt="our" />
       <form onSubmit={handleSubmit}>
         <label htmlFor="Email">Email:</label>
@@ -83,4 +96,3 @@ export default LoginPage;
         <button type="Submit">Sign In</button>
       </form>
       {/* <a href="#">Forgot Password?</a> */
-
