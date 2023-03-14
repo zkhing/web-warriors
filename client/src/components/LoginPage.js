@@ -7,14 +7,12 @@ import { useState, useEffect } from "react";
 
 const handleClick = () => {
 	let username = document.getElementById("loginInput").value;
-	console.log(username);
-	alert(username);
 	fetch(`http://localhost:3100/api/users/${username}`)
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
 			if (data.length === 1) {
-				alert("go to availability link")
+				<a href="http://localhost:3000/input"> </a>;
 			}
 			else { alert("the username you entered does not match any student") }
 		})
