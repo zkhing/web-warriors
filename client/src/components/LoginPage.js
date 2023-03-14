@@ -23,13 +23,33 @@ const handleClick = () => {
 function LoginPage() {
 	return (
 		<div className="login_page">
-
-			<input placeholder="username" type="text" id="loginInput" ></input>
-			<button onClick={handleClick}> Login</button>
-		</div>
-	)
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 offset-md-3">
+            <div className="logo-container text-center">
+              <img src={logo} alt="Our Logo" className="logo" />
+            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="Email">Email:</label>
+                <input
+                  type="Email"
+                  id="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="form-control"
+                />
+              </div>
+              <button type="submit" className="btn btn-primary btn-block">
+                Sign In
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
-
 
 export default LoginPage;
 
