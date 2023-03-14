@@ -27,7 +27,7 @@ function LoginPage() {
         <div className="row">
           <div className="col-md-6 offset-md-3">
             <div className="logo-container text-center">
-              <img src={logo} alt="Our Logo" className="logo" />
+              <img src={logo} alt="PUT OUR LOGO " className="logo" />
             </div>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
