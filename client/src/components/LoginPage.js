@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 // import { Container, Col, Row, Button, Form, Card } from "react-bootstrap";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
-
+import './LoginPage.css';
+import logo from './logo.png';
 
 const handleClick = () => {
 	let username = document.getElementById("loginInput").value;
