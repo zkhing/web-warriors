@@ -34,6 +34,10 @@
   border-radius: 0;
 }
 
+.logo-container {
+  margin-bottom: 20px;
+}
+
 @media (max-width: 767px) {
   .login_page {
     padding-top: 50px;
