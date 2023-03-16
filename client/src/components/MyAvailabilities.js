@@ -31,8 +31,8 @@ const MyAvailabilities = () => {
           <th>Date</th>
           <th>TimeFrom</th>
           <th>TimeTo</th>
-       
         </tr>
+        
         {data.map((data, index) => (
           <tr key={index}>
             <td>{data.username}</td>
