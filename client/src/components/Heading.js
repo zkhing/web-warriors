@@ -1,6 +1,7 @@
 
 import { Container, Nav, Navbar} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import logo from "../images/logo1.png";
 
 function Heading() {
   return (
@@ -9,7 +10,7 @@ function Heading() {
 				<Navbar.Brand href="#home">
 					<img
 						alt="CYF Logo"
-						src="https://www.pngkey.com/png/full/20-206722_logo-code-your-future-logo.png"
+						src={logo}
 						width="30%"
 						height="30%"
 						className="d-inline-block align-top"
