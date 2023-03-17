@@ -16,7 +16,7 @@ function LoginPage() {
 			if (data.length > 0) {
 				window.location.href = "InputAvailabilitiesPage";
 			} else {
-				alert("Username not found.");
+				alert("The Username you entered does not match any student, try again!!");
 			}
 		} catch (error) {
 			console.error(error);
