@@ -13,8 +13,8 @@ function LoginPage() {
 			const response = await fetch(`/api/users/${username}`);
 			const data = await response.json();
 			console.log(data);
-			if (data.length === 1) {
-				alert("Go to availability link.");
+			if (data.length > 0) {
+				window.location.href = "InputAvailabilitiesPage";
 			} else {
 				alert("Username not found.");
 			}
