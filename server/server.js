@@ -24,6 +24,16 @@ router.get("/users/:username", (req, res) => {
 		});
 });
 
+router.get("/InputAvailabilitiesPage", (req, res) => {
+	const newDate = (req.query.date);
+	const newFtime = (req.query.from_time);
+	const newTotime = (req.query.to_time);
+	db.query("SELECT * FROM availabilities WHERE date = $1 and (from_time = $2 or to_time = $3)", [newDate, newFtime, newTotime], (err, result) => {
+		res.send(result.rows)
+
+	});
+});
+
 
 router.get("/users", (req, res) => {
 	db.query("SELECT * FROM users")
