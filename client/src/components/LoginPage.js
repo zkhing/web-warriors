@@ -1,75 +1,44 @@
-import { useState, useEffect } from "react";
-
-// import { Container, Col, Row, Button, Form, Card } from "react-bootstrap";
-// import "bootstrap/dist/css/bootstrap.min.css";
-
-import './LoginPage.css';
-import logo from './logo.png';
-
-const handleClick = () => {
-	let username = document.getElementById("loginInput").value;
-	fetch(`http://localhost:3100/api/users/${username}`)
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data);
-			if (data.length === 1) {
-				<a href="http://localhost:3000/input"> </a>;
-			}
-			else { alert("the username you entered does not match any student") }
-		})
-}
-
+import { useState } from "react";
 
 function LoginPage() {
-	return (
-		<div className="login_page">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 offset-md-3">
-            <div className="logo-container text-center">
-              <img src={logo} alt="PUT OUR LOGO " className="logo" />
-            </div>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="Email">Email:</label>
-                <input
-                  type="Email"
-                  id="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="form-control"
-                />
-              </div>
-              <button type="submit" className="btn btn-primary btn-block">
-                Sign In
-              </button>
-            </form>
-          </div>
-        </div>
+  const [username, setUsername] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(username);
+    try {
+      const response = await fetch(`/api/users/${username}`);
+      const data = await response.json();
+      console.log(data);
+      if (data.length === 1) {
+        alert("Go to availability link.");
+      } else {
+        alert("Username not found.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred. Please try again later.");
+    }
+  };
+
+  const handleInputChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Username:</label>
+        <input
+          type="text"
+          placeholder="Enter your username"
+          value={username}
+          onChange={handleInputChange}
+        />
       </div>
-    </div>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 
 export default LoginPage;
-
-/* <div>
-	  <img src="our-image-url.jpg" alt="our" />
-	  <form onSubmit={handleSubmit}>
-		<label htmlFor="Email">Email:</label>
-		<input
-		  type="Email"
-		  id="Email"
-		  value={email}
-		  onChange={(e) => setEmail(e.target.value)}
-		/>
-		<label htmlFor="password 1 ">Password:</label>
-		<input
-		  type="Password"
-		  id="Password"
-		  value={password}
-		  onChange={(e) => setPassword(e.target.value)}
-		/>
-		<button type="Submit">Sign In</button>
-	  </form>
-	  {/* <a href="#">Forgot Password?</a> */
