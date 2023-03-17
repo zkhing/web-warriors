@@ -8,9 +8,12 @@ export default {
 };
 
 function createDatabaseUrl() {
+
 	if (process.env.DATABASE_URL) {
+		console.log(process.env.DATABASE_URL);
 		return process.env.DATABASE_URL;
 	}
+	console.log('HERE =======>', process.env)
 	const host = process.env.DB_HOST ?? "localhost";
 	const name = process.env.DB_NAME ?? "cyf";
 	const password = process.env.DB_PASS ?? process.env.DB_PASSWORD ?? "";
