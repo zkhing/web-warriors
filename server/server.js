@@ -49,6 +49,28 @@ router.get("/availabilities", (req, res) => {
 	});
 });
 
+
+
+
+
+//post new availabilities
+
+router.post("/postavailabilities", (req, res)=>{
+	const { availabilityid, username, date, from_time, to_time } = req.body;
+	const newAvailability = req.body;
+	console.log(newAvailability)
+
+	
+
+	console.log( availabilityid, username, date, from_time, to_time);
+
+	db.query("INSERT INTO availabilities(availabilityid, username, date, from_time, to_time) VALUES(availabilityid, username,date, from_time, to_time)",
+	res.json("Data inserted succesfully")
+)
+}
+);			
+
+
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
 connectDb().then(() => server.listen(config.port));
