@@ -57,19 +57,30 @@ router.get("/availabilities", (req, res) => {
 
 router.post("/postavailabilities", (req, res)=>{
 	const { availabilityid, username, date, from_time, to_time } = req.body;
-	const newAvailability = req.body;
-	console.log(newAvailability)
+	db.query("INSERT INTO availabilities (availabilityid, username, date, from_time, to_time) VALUES ($1, $2, $3, $4, $5)", [availabilityid, username, date, from_time, to_time],
+	(err, result) =>{
+		if (err){
+		res.send("Your avilibility is not saved properly, Please try again!!")
+		}
+		else{
+			res.send(`Data inserted succesfully ${username}, ${availabilityid}`);
 
-	
+		}
+	})
+});
 
-	console.log( availabilityid, username, date, from_time, to_time);
 
-	db.query("INSERT INTO availabilities(availabilityid, username, date, from_time, to_time) VALUES(availabilityid, username,date, from_time, to_time)",
-	res.json("Data inserted succesfully")
-)
-}
-);			
 
+
+// const insertQuery = "INSERT INTO availabilities (username, date, from_time, to_time) VALUES ($1, $2, $3, $4);";
+// db.query(insertQuery, newAvailability, (error, result) => {
+// 	if (error) {
+// 		console.error(error);
+// 		res.status(500).json({ message: "Internal Server Error" });
+// 		return;
+// 	}
+// 	res.json({ message: "Availability added successfully." });
+// });
 
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
