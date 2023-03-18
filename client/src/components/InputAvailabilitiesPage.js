@@ -1,3 +1,14 @@
+
+import {
+Col,
+Row,
+Form,
+Table,
+Button,
+} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
 const InputAvailabilitiesPage = () => {
     const handleClick = async () => {
         const date = document.getElementById("date").value;
@@ -34,7 +45,56 @@ const InputAvailabilitiesPage = () => {
     };
 
     return (
-        <div>
+		<>
+        
+			<Form>
+                <Row>
+                  <Col>
+                   <Form.Group>
+						<Form.Label>Available Date</Form.Label>
+						<Form.Control type="date" id="date" />
+                    </Form.Group>
+                 </Col>
+                
+                 <Col>
+                  <Form.Group>
+						<Form.Label>From</Form.Label>
+						<Form.Control type="time" id="from_time" />
+                  </Form.Group>
+                 </Col>
+               
+                 <Col>
+                  <Form.Group>
+                        <Form.Label>To</Form.Label>
+						<Form.Control type="time" id="to_time" />
+                 </Form.Group>
+                 </Col>
+              </Row>
+
+                <Button onClick={handleClick} type="submit">
+					Submit
+				</Button>
+			</Form>
+
+				
+				<Table className="table">
+					<thead>
+						<tr>
+							<th>Username</th>
+							<th>Date</th>
+							<th>From</th>
+							<th>To</th>
+						</tr>
+					</thead>
+					<tbody id="tbody"></tbody>
+				</Table>
+             
+			</>
+	);
+};
+export default InputAvailabilitiesPage;
+
+{/* <div>
             <form>
                 <label htmlFor="date"> Available Date</label>
                 <input type="date" id="date"></input>
@@ -59,7 +119,4 @@ const InputAvailabilitiesPage = () => {
             </table >
 
             <button onClick={handleClick}>Send</button>
-        </div>
-     );
-};
-export default InputAvailabilitiesPage;
+        </div> */}
