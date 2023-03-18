@@ -16,6 +16,9 @@ const InputAvailabilitiesPage = () => {
       "availabilities",
       JSON.stringify([...availabilities, newAvailability])
     );
+    setDate("");
+    setFromTime("");
+    setToTime("");
   };
 
   return (
@@ -107,8 +110,6 @@ const InputAvailabilitiesPage = () => {
 };
 
 export default InputAvailabilitiesPage;
-
-
 
 
 
