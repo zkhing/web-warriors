@@ -4,20 +4,18 @@ const InputAvailabilitiesPage = () => {
   const [date, setDate] = useState("");
   const [fromTime, setFromTime] = useState("");
   const [toTime, setToTime] = useState("");
-  const [availabilities, setAvailabilities] = useState([]);
+  const [availabilities, setAvailabilities] = useState(
+    JSON.parse(localStorage.getItem("availabilities")) || []
+  );
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const response = await fetch(`api/InputAvailabilitiesPage?date=${date}&from_time=${fromTime}&to_time=${toTime}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await response.json();
-    setAvailabilities(data);
+    const newAvailability = { date, fromTime, toTime };
+    setAvailabilities([...availabilities, newAvailability]);
+    localStorage.setItem(
+      "availabilities",
+      JSON.stringify([...availabilities, newAvailability])
+    );
   };
 
   return (
@@ -85,19 +83,18 @@ const InputAvailabilitiesPage = () => {
         <table className="table">
           <thead>
             <tr>
-              <th>Username</th>
               <th>Date</th>
               <th>From</th>
               <th>To</th>
+              <th>Available trainees</th>
             </tr>
           </thead>
           <tbody>
-            {availabilities.map((user) => (
-              <tr key={user.id}>
-                <td>{user.username}</td>
-                <td>{user.date}</td>
-                <td>{user.from_time}</td>
-                <td>{user.to_time}</td>
+            {availabilities.map((availability, index) => (
+              <tr key={index}>
+                <td>{availability.date}</td>
+                <td>{availability.fromTime}</td>
+                <td>{availability.toTime}</td>
               </tr>
             ))}
           </tbody>
