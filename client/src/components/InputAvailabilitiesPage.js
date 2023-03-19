@@ -1,4 +1,14 @@
-import { useState} from "react";
+import { useState } from "react";
+import {
+Col,
+Row,
+Form,
+Table,
+Button,
+Container,
+Card,
+} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const InputAvailabilitiesPage = () => {
   const [date, setDate] = useState("");
@@ -26,209 +36,101 @@ const InputAvailabilitiesPage = () => {
         alert("There was an error saving your availability. Please try again.");
       }
     };
-  
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group row">
-          <label htmlFor="date" className="col-sm-2 col-form-label">
-            Available Date
-          </label>
-          <div className="col-sm-4">
-            <input
-              type="date"
-              className="form-control"
-              id="date"
-              value={date}
-              onChange={(event) => setDate(event.target.value)}
-              required
-            />
-          </div>
-        </div>
+		<>
+			<Container className="bg-secondary p-5 my-5 container-2">
+				<Form onSubmit={handleSubmit}>
+					<Card.Title className="text-center my-3">
+						User Input Availabilities
+					</Card.Title>
 
-        <div className="form-group row">
-          <label htmlFor="fromTime" className="col-sm-2 col-form-label">
-            From
-          </label>
-          <div className="col-sm-4">
-            <input
-              type="time"
-              className="form-control"
-              id="fromTime"
-              value={fromTime}
-              onChange={(event) => setFromTime(event.target.value)}
-              required
-            />
-          </div>
-        </div>
+					<Row>
+						<Col>
+							<Form.Group controlId="formDate">
+								<Form.Label>Date</Form.Label>
+								<Form.Control
+									type="date"
+									className="form-control"
+									id="date"
+									value={date}
+									onChange={(event) => setDate(event.target.value)}
+									required
+								/>
+							</Form.Group>
+						</Col>
 
-        <div className="form-group row">
-          <label htmlFor="toTime" className="col-sm-2 col-form-label">
-            To
-          </label>
-          <div className="col-sm-4">
-            <input
-              type="time"
-              className="form-control"
-              id="toTime"
-              value={toTime}
-              onChange={(event) => setToTime(event.target.value)}
-              required
-            />
-          </div>
-        </div>
+						<Col>
+							<Form.Group>
+								<Form.Label>From</Form.Label>
+								<Form.Control
+									type="time"
+									className="form-control"
+									id="fromTime"
+									value={fromTime}
+									onChange={(event) => setFromTime(event.target.value)}
+									required
+								/>
+							</Form.Group>
+						</Col>
 
-        <div className="form-group row">
-          <div className="col-sm-2"></div>
-          <div className="col-sm-10">
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
+						<Col>
+							<Form.Group>
+								<Form.Label>To</Form.Label>
+								<Form.Control
+									type="time"
+									className="form-control"
+									id="toTime"
+									value={toTime}
+									onChange={(event) => setToTime(event.target.value)}
+									required
+								/>
+							</Form.Group>
+						</Col>
 
-      {availabilities.length > 0 ? (
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>From</th>
-              <th>To</th>
-              {/* <th>Available trainees</th> */}
-            </tr>
-          </thead>
-          <tbody>
-            {availabilities.map((availability, index) => (
-              <tr key={index}>
-                <td>{availability.date}</td>
-                <td>{availability.fromTime}</td>
-                <td>{availability.toTime}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <div>No availability matching your availability</div>
-      )}
-    </>
-  );
+						<Button type="submit" className="d-grid gap-2 col-6 mx-auto mt-3">
+							Submit
+						</Button>
+					</Row>
+				</Form>
+
+				{/* {availabilities.length > 0 ? ( */}
+					<Table className="table">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>From</th>
+								<th>To</th>
+							</tr>
+						</thead>
+						<tbody>
+							{availabilities.map((availability, index) => (
+								<tr key={index}>
+									<td>{availability.date}</td>
+									<td>{availability.fromTime}</td>
+									<td>{availability.toTime}</td>
+								</tr>
+							))}
+						</tbody>
+					</Table>
+				{/* ) : (
+					<Card.Text className="text-center my-3">
+						Sorry! You have not found study-buddies yet.
+					</Card.Text>
+				)} */}
+
+				<Button
+					type="submit"
+					className="bg-dark d-grid gap-2 col-6 mx-auto mt-3"
+				>
+					View Matching Students
+				</Button>
+			</Container>
+		</>
+	);
 };
 
 export default InputAvailabilitiesPage;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import {
-// Col,
-// Row,
-// Form,
-// Table,
-// Button,
-// } from "react-bootstrap";
-// import "bootstrap/dist/css/bootstrap.min.css";
-//     return (
-// 		<>
-        
-// 			<Form>
-//                 <Row>
-//                   <Col>
-//                    <Form.Group>
-// 						<Form.Label>Available Date</Form.Label>
-// 						<Form.Control type="date" id="date" />
-//                     </Form.Group>
-//                  </Col>
-                
-//                  <Col>
-//                   <Form.Group>
-// 						<Form.Label>From</Form.Label>
-// 						<Form.Control type="time" id="from_time" />
-//                   </Form.Group>
-//                  </Col>
-               
-//                  <Col>
-//                   <Form.Group>
-//                         <Form.Label>To</Form.Label>
-// 						<Form.Control type="time" id="to_time" />
-//                  </Form.Group>
-//                  </Col>
-//               </Row>
-
-//                 <Button onClick={handleClick} type="submit">
-// 					Submit
-// 				</Button>
-// 			</Form>
-
-				
-// 				<Table className="table">
-// 					<thead>
-// 						<tr>
-// 							<th>Username</th>
-// 							<th>Date</th>
-// 							<th>From</th>
-// 							<th>To</th>
-// 						</tr>
-// 					</thead>
-// 					<tbody id="tbody"></tbody>
-// 				</Table>
-             
-// 			</>
-// 	);
-// };
-// export default InputAvailabilitiesPage;
-
-{/* <div>
-            <form>
-                <label htmlFor="date"> Available Date</label>
-                <input type="date" id="date"></input>
-                <label htmlFor="from"> From </label>
-                <input type="time" id="from_time"></input>
-                <label htmlFor="to">To</label>
-                <input type="time" id="to_time"></input>
-            </form>
-            <br></br>
-            <table className="table" >
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Date</th>
-                        <th>From</th>
-                        <th>To</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody">
-
-                </tbody>
-            </table >
-
-            <button onClick={handleClick}>Send</button>
-        </div> */}
