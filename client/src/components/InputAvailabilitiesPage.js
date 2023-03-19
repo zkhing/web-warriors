@@ -1,17 +1,14 @@
-import { useState } from "react";
+import { useState} from "react";
 
 const InputAvailabilitiesPage = () => {
   const [date, setDate] = useState("");
   const [fromTime, setFromTime] = useState("");
   const [toTime, setToTime] = useState("");
-  const [availabilities, setAvailabilities] = useState(
-    JSON.parse(localStorage.getItem("availabilities")) || []
-  );
+  const [availabilities, setAvailabilities] = useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newAvailability = { date, fromTime, toTime };
-    // setAvailabilities([...availabilities, newAvailability]);
     const response = await fetch(`/api/postavailabilities`, {
       method: "POST",
       headers: {
@@ -21,7 +18,7 @@ const InputAvailabilitiesPage = () => {
       });
 
       if (response.ok) {
-        // setAvailabilities([...availabilities, newAvailability]);
+        setAvailabilities([...availabilities, newAvailability]);
         setDate("");
         setFromTime("");
         setToTime("");
@@ -30,14 +27,6 @@ const InputAvailabilitiesPage = () => {
       }
     };
   
-
-
-      // const data = await response.json();
-      // setAvailabilities(data);
-      // setDate("");
-      // setFromTime("");
-      // setToTime("");
-      // };
 
   return (
     <>
@@ -167,43 +156,6 @@ export default InputAvailabilitiesPage;
 // Button,
 // } from "react-bootstrap";
 // import "bootstrap/dist/css/bootstrap.min.css";
-
-
-// const InputAvailabilitiesPage = () => {
-//     const handleClick = async () => {
-//         const date = document.getElementById("date").value;
-//         const from_time = document.getElementById("from_time").value;
-//         const to_time = document.getElementById("to_time").value;
-//         console.log(date);
-//         console.log(from_time);
-//         console.log(to_time);
-
-//         const response = await fetch(`api/InputAvailabilitiesPage?date=${date}&from_time=${from_time}&to_time=${to_time}`, {
-//             method: "get",
-//             headers: {
-//                 "Content_type": "application/json",
-//             },
-
-//         });
-//         const data = await response.json();
-//         console.log(data);
-//         if (data.length > 0) {
-//             let temp = "";
-
-//             data.forEach((user) => {
-//                 temp += "<tr>";
-//                 temp += "<td>" + user.username + "<td>";
-//                 temp += "<td>" + user.date + "<td>";
-//                 temp += "<td>" + user.from_time + "<td>";
-//                 temp += "<td>" + user.to_time + "<td>";
-//             });
-//             document.getElementById("tbody").innerHTML = temp;
-
-//         } else {
-//             alert("No availability matching your availability");
-//         }
-//     };
-
 //     return (
 // 		<>
         
