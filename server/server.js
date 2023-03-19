@@ -14,30 +14,7 @@ server.on("listening", () => {
 	const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
 	logger.info("listening on: %s", bind);
 });
-
-router.get("/users/:username", (req, res) => {
-	const studentUsername = req.params.username;
-	db.query(
-		"SELECT * FROM users WHERE username = $1",
-		[studentUsername],
-		(err, result) => {
-			res.send(result.rows);
-		}
-	);
-});
-
-router.get("/InputAvailabilitiesPage", (req, res) => {
-	const newDate = req.query.date;
-	const newFtime = req.query.from_time;
-	const newTotime = req.query.to_time;
-	db.query(
-		"SELECT * FROM availabilities WHERE date = $1 and (from_time = $2 or to_time = $3)",
-		[newDate, newFtime, newTotime],
-		(err, result) => {
-			res.send(result.rows);
-		}
-	);
-});
+// Display all users 
 
 router.get("/users", (req, res) => {
 	db.query("SELECT * FROM users")
@@ -47,16 +24,23 @@ router.get("/users", (req, res) => {
 		});
 });
 
+// display all availabilities 
+
 router.get("/availabilities", (req, res) => {
 	db.query("SELECT * FROM availabilities", (err, result) => {
 		res.json(result.rows);
 	});
 });
 
+
+
+
+
 //post new availabilities
 router.post("/postavailabilities", (req, res) => {
 	const { username, date, fromTime, toTime } = req.body;
 	db.query(
+<<<<<<< HEAD
 		"INSERT INTO availabilities (username, date, from_time, to_time) VALUES ($1, $2, $3, $4)",
 		[username, date, fromTime, toTime],
 		(err, result) => {
@@ -67,10 +51,48 @@ router.post("/postavailabilities", (req, res) => {
 					`Data inserted successfully for ${username}, ${date}, ${fromTime} to ${toTime}. Thank you for your time!`
 				);
 			}
+=======
+	  "INSERT INTO availabilities (date, from_time, to_time) VALUES ($1, $2, $3)",
+	  [date, fromTime, toTime],
+	  (err, result) => {
+		if (err) {
+		  res.send(
+			"Your availability is not saved properly, please try again!!"
+		  );
+		} else {
+		  res.send(`Data inserted successfully for ${date}, ${fromTime} to ${toTime}. Thank you for your time!`);
+>>>>>>> 76e2345247d8f93559b95f6d138e348fa16bcbbc
 		}
+	  }
 	);
-});
+  });
+  
+// router.post("/postavailabilities", (req, res)=>{
+// 	const { availabilityid, username, date, from_time, to_time } = req.body;
+// 	db.query("INSERT INTO availabilities (availabilityid, username, date, from_time, to_time) VALUES ($1, $2, $3, $4, $5)", [availabilityid, username, date, from_time, to_time],
+// 	(err, result) =>{
+// 		if (err){
+// 		res.send("Your avilibility is not saved properly, Please try again!!")
+// 		}
+// 		else{
+// 			res.send(`Data inserted succesfully ${username}, ${availabilityid} thank for your time`);
 
+// 		}
+// 	})
+// });
+
+
+
+
+// const insertQuery = "INSERT INTO availabilities (username, date, from_time, to_time) VALUES ($1, $2, $3, $4);";
+// db.query(insertQuery, newAvailability, (error, result) => {
+// 	if (error) {
+// 		console.error(error);
+// 		res.status(500).json({ message: "Internal Server Error" });
+// 		return;
+// 	}
+// 	res.json({ message: "Availability added successfully." });
+// });
 
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
