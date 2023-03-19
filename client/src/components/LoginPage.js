@@ -63,15 +63,3 @@ function LoginPage() {
 
 export default LoginPage;
 
-{/* // <form onSubmit={handleSubmit}>
-		//   <div>
-		//     <label>Username:</label>
-		//     <input
-		//       type="text"
-		//       placeholder="Enter your username"
-		//       value={username}
-		//       onChange={handleInputChange}
-		//     />
-		//   </div>
-		//   <button type="submit">Submit</button>
-		// </form> */}
