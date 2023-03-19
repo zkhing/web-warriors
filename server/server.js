@@ -63,7 +63,7 @@ router.post("/postavailabilities", (req, res)=>{
 		res.send("Your avilibility is not saved properly, Please try again!!")
 		}
 		else{
-			res.send(`Data inserted succesfully ${username}, ${availabilityid}`);
+			res.send(`Data inserted succesfully ${username}, ${availabilityid} thank for your time`);
 
 		}
 	})
