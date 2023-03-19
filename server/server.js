@@ -54,20 +54,36 @@ router.get("/availabilities", (req, res) => {
 
 
 //post new availabilities
-
-router.post("/postavailabilities", (req, res)=>{
-	const { availabilityid, username, date, from_time, to_time } = req.body;
-	db.query("INSERT INTO availabilities (availabilityid, username, date, from_time, to_time) VALUES ($1, $2, $3, $4, $5)", [availabilityid, username, date, from_time, to_time],
-	(err, result) =>{
-		if (err){
-		res.send("Your avilibility is not saved properly, Please try again!!")
+router.post("/postavailabilities", (req, res) => {
+	const { date, fromTime, toTime } = req.body;
+	db.query(
+	  "INSERT INTO availabilities (date, from_time, to_time) VALUES ($1, $2, $3)",
+	  [date, fromTime, toTime],
+	  (err, result) => {
+		if (err) {
+		  res.send(
+			"Your availability is not saved properly, please try again!!"
+		  );
+		} else {
+		  res.send(`Data inserted successfully for ${date}, ${fromTime} to ${toTime}. Thank you for your time!`);
 		}
-		else{
-			res.send(`Data inserted succesfully ${username}, ${availabilityid} thank for your time`);
+	  }
+	);
+  });
+  
+// router.post("/postavailabilities", (req, res)=>{
+// 	const { availabilityid, username, date, from_time, to_time } = req.body;
+// 	db.query("INSERT INTO availabilities (availabilityid, username, date, from_time, to_time) VALUES ($1, $2, $3, $4, $5)", [availabilityid, username, date, from_time, to_time],
+// 	(err, result) =>{
+// 		if (err){
+// 		res.send("Your avilibility is not saved properly, Please try again!!")
+// 		}
+// 		else{
+// 			res.send(`Data inserted succesfully ${username}, ${availabilityid} thank for your time`);
 
-		}
-	})
-});
+// 		}
+// 	})
+// });
 
 
 
