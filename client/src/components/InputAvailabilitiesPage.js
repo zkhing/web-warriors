@@ -11,15 +11,33 @@ const InputAvailabilitiesPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newAvailability = { date, fromTime, toTime };
-    setAvailabilities([...availabilities, newAvailability]);
-    localStorage.setItem(
-      "availabilities",
-      JSON.stringify([...availabilities, newAvailability])
-    );
-    setDate("");
-    setFromTime("");
-    setToTime("");
-  };
+    // setAvailabilities([...availabilities, newAvailability]);
+    const response = await fetch(`/api/postavailabilities`, {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAvailability),
+      });
+
+      if (response.ok) {
+        // setAvailabilities([...availabilities, newAvailability]);
+        setDate("");
+        setFromTime("");
+        setToTime("");
+      } else {
+        alert("There was an error saving your availability. Please try again.");
+      }
+    };
+  
+
+
+      // const data = await response.json();
+      // setAvailabilities(data);
+      // setDate("");
+      // setFromTime("");
+      // setToTime("");
+      // };
 
   return (
     <>
@@ -89,7 +107,7 @@ const InputAvailabilitiesPage = () => {
               <th>Date</th>
               <th>From</th>
               <th>To</th>
-              <th>Available trainees</th>
+              {/* <th>Available trainees</th> */}
             </tr>
           </thead>
           <tbody>
