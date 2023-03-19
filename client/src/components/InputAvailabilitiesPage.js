@@ -95,24 +95,24 @@ const InputAvailabilitiesPage = () => {
 				</Form>
 
 				{/* {availabilities.length > 0 ? ( */}
-					<Table className="table">
-						<thead>
-							<tr>
-								<th>Date</th>
-								<th>From</th>
-								<th>To</th>
+				<Table className="table table-striped mt-5">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>From</th>
+							<th>To</th>
+						</tr>
+					</thead>
+					<tbody>
+						{availabilities.map((availability, index) => (
+							<tr key={index}>
+								<td>{availability.date}</td>
+								<td>{availability.fromTime}</td>
+								<td>{availability.toTime}</td>
 							</tr>
-						</thead>
-						<tbody>
-							{availabilities.map((availability, index) => (
-								<tr key={index}>
-									<td>{availability.date}</td>
-									<td>{availability.fromTime}</td>
-									<td>{availability.toTime}</td>
-								</tr>
-							))}
-						</tbody>
-					</Table>
+						))}
+					</tbody>
+				</Table>
 				{/* ) : (
 					<Card.Text className="text-center my-3">
 						Sorry! You have not found study-buddies yet.
