@@ -18,25 +18,28 @@ const InputAvailabilitiesPage = () => {
 	}, [location]);
 
 	const handleSubmit = async (event) => {
-		event.preventDefault();
-		const newAvailability = { date, fromTime, toTime };
-		const response = await fetch(`/api/postavailabilities`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(newAvailability),
-		});
-
-		if (response.ok) {
-			setAvailabilities([...availabilities, newAvailability]);
-			setDate("");
-			setFromTime("");
-			setToTime("");
-		} else {
-			alert("There was an error saving your availability. Please try again.");
-		}
-	};
+    event.preventDefault();
+    const searchParams = new URLSearchParams(location.search);
+    const username = searchParams.get("username");
+    const newAvailability = { date, fromTime, toTime, username };
+    const response = await fetch(`/api/postavailabilities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAvailability),
+    });
+  
+    if (response.ok) {
+      setAvailabilities([...availabilities, newAvailability]);
+      setDate("");
+      setFromTime("");
+      setToTime("");
+    } else {
+      alert("There was an error saving your availability. Please try again.");
+    }
+  };
+  
 
 
   return (
