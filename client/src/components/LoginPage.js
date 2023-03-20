@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button, Form, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Heading";
-import group from "../images/group-img.jpg";
 
 function LoginPage() {
 	const [username, setUsername] = useState("");
@@ -36,7 +35,7 @@ function LoginPage() {
 				<Card className="p-3" style={{ width: "50%" }}>
 					<Card.Img
 						className="img-thumbnail"
-						src={group}
+						src="https://img.freepik.com/premium-photo/study-group-college-students_53876-72873.jpg"
 					/>
 				</Card>
 
