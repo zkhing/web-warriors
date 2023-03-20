@@ -1,32 +1,43 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Button, Form, Card } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./Heading";
 
 const InputAvailabilitiesPage = () => {
-  const [date, setDate] = useState("");
-  const [fromTime, setFromTime] = useState("");
-  const [toTime, setToTime] = useState("");
-  const [availabilities, setAvailabilities] = useState([]);
+	const [date, setDate] = useState("");
+	const [fromTime, setFromTime] = useState("");
+	const [toTime, setToTime] = useState("");
+	const [availabilities, setAvailabilities] = useState([]);
+	const location = useLocation();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const newAvailability = { date, fromTime, toTime };
-    const response = await fetch(`/api/postavailabilities`, {
-      method: "POST",
-      headers: {
-      "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newAvailability),
-      });
+	useEffect(() => {
+		const searchParams = new URLSearchParams(location.search);
+		const username = searchParams.get("username");
+		// Do something with the username, e.g. display the user's name
+	}, [location]);
 
-      if (response.ok) {
-        setAvailabilities([...availabilities, newAvailability]);
-        setDate("");
-        setFromTime("");
-        setToTime("");
-      } else {
-        alert("There was an error saving your availability. Please try again.");
-      }
-    };
-  
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		const newAvailability = { date, fromTime, toTime };
+		const response = await fetch(`/api/postavailabilities`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(newAvailability),
+		});
+
+		if (response.ok) {
+			setAvailabilities([...availabilities, newAvailability]);
+			setDate("");
+			setFromTime("");
+			setToTime("");
+		} else {
+			alert("There was an error saving your availability. Please try again.");
+		}
+	};
+
 
   return (
     <>
