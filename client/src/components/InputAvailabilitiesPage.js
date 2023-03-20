@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Button, Form, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Card,Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./Heading";
+// import Header from "./Heading";
 
 const InputAvailabilitiesPage = () => {
 	const [date, setDate] = useState("");
@@ -22,8 +22,8 @@ const InputAvailabilitiesPage = () => {
     event.preventDefault();
     const searchParams = new URLSearchParams(location.search);
     const username = searchParams.get("username");
-    const newAvailability = { date, fromTime, toTime, username };
-    const response = await fetch(`/api/postavailabilities`, {
+    const newAvailability = { username, date, fromTime, toTime };
+    const response = await fetch("/api/postavailabilities", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

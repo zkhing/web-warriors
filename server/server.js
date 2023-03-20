@@ -5,6 +5,7 @@ import app from "./app";
 import { connectDb, disconnectDb } from "./db";
 import config from "./utils/config";
 import logger from "./utils/logger";
+// import LoginPage from "../client/src/components/LoginPage";
 
 const server = http.createServer(app);
 require("dotenv").config();
@@ -14,6 +15,34 @@ server.on("listening", () => {
 	const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
 	logger.info("listening on: %s", bind);
 });
+
+
+// LoginPage endpoint
+
+router.get("/users/:username", (req, res) => {
+	const studentUsername = req.params.username;
+	db.query(
+		"SELECT * FROM users WHERE username = $1",
+		[studentUsername],
+		(err, result) => {
+			res.send(result.rows);
+		}
+	);
+});
+
+router.get("/InputAvailabilitiesPage", (req, res) => {
+	const newDate = req.query.date;
+	const newFtime = req.query.from_time;
+	const newTotime = req.query.to_time;
+	db.query(
+		"SELECT * FROM availabilities WHERE date = $1 and (from_time = $2 or to_time = $3)",
+		[newDate, newFtime, newTotime],
+		(err, result) => {
+			res.send(result.rows);
+		}
+	);
+});
+
 // Display all users 
 
 router.get("/users", (req, res) => {
@@ -35,10 +64,10 @@ router.get("/availabilities", (req, res) => {
 
 //post new availabilities
 router.post("/postavailabilities", (req, res) => {
-	const { username , date, fromTime, toTime } = req.body;
+	const { username, date, fromTime, toTime } = req.body;
 	db.query(
 	  "INSERT INTO availabilities (username,date, from_time, to_time) VALUES ($1, $2, $3,$4)",
-	  [username,date, fromTime, toTime],
+	  [username, date, fromTime, toTime],
 	  (err, result) => {
 		if (err) {
 		  res.send(
