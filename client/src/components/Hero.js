@@ -2,6 +2,7 @@
 import { Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Heading";
+import home from "../images/home.jpg";
 
 function Hero() {
   return (
@@ -11,7 +12,7 @@ function Hero() {
 				<Card className="p-3" style={{ width: "50%" }}>
 					<Card.Img
 						className="img-thumbnail"
-						src="https://codeyourfuture.io/wp-content/uploads/2019/10/HRibes_team-1.jpg"
+						src={home}
 					/>
 				</Card>
 
