@@ -11,6 +11,7 @@ const InputAvailabilitiesPage = () => {
 	const [availabilities, setAvailabilities] = useState([]);
 	const location = useLocation();
 
+	// Do something with the username
 	useEffect(() => {
 		const searchParams = new URLSearchParams(location.search);
 		const username = searchParams.get("username");
