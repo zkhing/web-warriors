@@ -79,6 +79,19 @@ router.post("/postavailabilities", (req, res) => {
 	  }
 	);
   });
+// Matching availability student 
+
+router.get("/matchingAvailabilities", (req, res) => {
+	const {date, from_time, to_time} = req.body
+	db.query("SELECT users.first_name, users.surname, users.email, availabilities.date, availabilities.from_time, availabilities.to_time FROM users INNER JOIN availabilities ON users.username = availabilities.username WHERE date = $1 and (from_time = $2 or to_time = $3);", [date, from_time, to_time], (err, result) => {
+if ( err) {
+	res.send("Check your input and try again!!")
+}
+else{
+	res.send(result.rows)
+}
+	});
+});
   
 
 
