@@ -4,70 +4,72 @@ import { Container, Row, Col, Button, Form, Card, Table } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const InputAvailabilitiesPage = () => {
-	const [date, setDate] = useState("");
-	const [fromTime, setFromTime] = useState("");
-	const [toTime, setToTime] = useState("");
-	const [availabilities, setAvailabilities] = useState([]);
-	const location = useLocation();
+  const [date, setDate] = useState("");
+  const [fromTime, setFromTime] = useState("");
+  const [toTime, setToTime] = useState("");
+  const [availabilities, setAvailabilities] = useState([]);
+  const location = useLocation();
 
-	useEffect(() => {
-		const searchParams = new URLSearchParams(location.search);
-		const username = searchParams.get("username");
-	}, [location]);
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const username = searchParams.get("username");
+    const savedAvailabilities = JSON.parse(localStorage.getItem(username));
+    if (savedAvailabilities) {
+      setAvailabilities(savedAvailabilities);
+    }
+  }, [location]);
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		const searchParams = new URLSearchParams(location.search);
-		const username = searchParams.get("username");
-		const newAvailability = { username, date, fromTime, toTime };
-		const response = await fetch("/api/postavailabilities", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(newAvailability),
-		});
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const searchParams = new URLSearchParams(location.search);
+    const username = searchParams.get("username");
+    const newAvailability = { username, date, fromTime, toTime };
+    const response = await fetch("/api/postavailabilities", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAvailability),
+    });
 
-		if (response.ok) {
-			setAvailabilities([...availabilities, newAvailability]);
-			setDate("");
-			setFromTime("");
-			setToTime("");
-		} else {
-			alert("There was an error saving your availability. Please try again.");
-		}
-	};
+    if (response.ok) {
+      setAvailabilities([...availabilities, newAvailability]);
+      setDate("");
+      setFromTime("");
+      setToTime("");
+      localStorage.setItem(username, JSON.stringify([...availabilities, newAvailability]));
+    } else {
+      alert("There was an error saving your availability. Please try again.");
+    }
+  };
 
-	
+  // Function to round a given time to the nearest 30 minutes
+  const roundToNearestThirtyMinutes = (time) => {
+    const [hours, minutes] = time.split(":");
+    const roundedMinutes = Math.round(minutes / 30) * 30;
+    const roundedHours = roundedMinutes === 60 ? parseInt(hours) + 1 : parseInt(hours);
+    return `${roundedHours < 10 ? "0" : ""}${roundedHours}:${roundedMinutes === 0 ? "00" : "30"}`;
+  };
 
-	// Function to round a given time to the nearest 30 minutes
-	const roundToNearestThirtyMinutes = (time) => {
-		const [hours, minutes] = time.split(":");
-		let roundedMinutes = Math.round(minutes / 30) * 30;
-		if (roundedMinutes === 60) {
-			roundedMinutes = "00";
-			const roundedHours = parseInt(hours) + 1;
-			return `${roundedHours < 10 ? "0" : ""}${roundedHours}:${roundedMinutes}`;
-		} else {
-			return `${hours}:${roundedMinutes < 10 ? "0" : ""}${roundedMinutes}`;
-		}
-	};
-
-	// Event handler to update fromTime state with a rounded value
-	const handleFromTimeChange = (event) => {
-		const roundedValue = roundToNearestThirtyMinutes(event.target.value);
-		setFromTime(roundedValue);
-	};
-
-	// Event handler to update toTime state with a rounded value
-const handleToTimeChange = (event) => {
-	const roundedValue = roundToNearestThirtyMinutes(event.target.value);
+  // Event handler to update fromTime state with a rounded value
+  const handleFromTimeChange = (event) => {
+    const hours = event.target.value.split(":")[0];
+    const minutes = Math.floor(event.target.value.split(":")[1] / 30) * 30;
+    const roundedValue = `${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
+    setFromTime(roundedValue);
+  };
+  // Event handler to update toTime state with a rounded value
+  const handleToTimeChange = (event) => {
+	const hours = event.target.value.split(":")[0];
+	const minutes = Math.floor(event.target.value.split(":")[1] / 30) * 30;
+	const roundedValue = `${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
 	if (roundedValue < fromTime) {
-		setToTime(fromTime);
+	  setToTime(fromTime);
 	} else {
-		setToTime(roundedValue);
+	  setToTime(roundedValue);
 	}
-};
+  };
+  
 
 	return (
 		<>
@@ -92,28 +94,31 @@ const handleToTimeChange = (event) => {
 </Form.Group>
 </Col>
 <Col>
-<Form.Group controlId="formFromTime">
-<Form.Label>From</Form.Label>
-<Form.Control
-type="time"
-value={fromTime}
-onChange={handleFromTimeChange}
-required
-/>
-</Form.Group>
+  <Form.Group controlId="formFromTime">
+    <Form.Label>From</Form.Label>
+    <Form.Control
+      type="time"
+      value={fromTime}
+      onChange={handleFromTimeChange}
+      required
+      step={1800} // set step to 1800 seconds (30 minutes)
+    />
+  </Form.Group>
 </Col>
 <Col>
-<Form.Group controlId="formToTime">
-<Form.Label>To</Form.Label>
-<Form.Control
-type="time"
-value={toTime}
-onChange={handleToTimeChange}
-required
-/>
-</Form.Group>
+  <Form.Group controlId="formToTime">
+    <Form.Label>To</Form.Label>
+    <Form.Control
+      type="time"
+      value={toTime}
+      onChange={handleToTimeChange}
+      required
+      step={1800} // set step to 1800 seconds (30 minutes)
+    />
+  </Form.Group>
 </Col>
-</Row>
+
+         </Row>
 <Button type="submit">Submit</Button>
 			</Form>
 
