@@ -1,24 +1,25 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Card,Table } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Card, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Header from "./Heading";
 
 const InputAvailabilitiesPage = () => {
-	const [date, setDate] = useState("");
-	const [fromTime, setFromTime] = useState("");
-	const [toTime, setToTime] = useState("");
-	const [availabilities, setAvailabilities] = useState([]);
-	const location = useLocation();
+  const [date, setDate] = useState("");
+  const [fromTime, setFromTime] = useState("");
+  const [toTime, setToTime] = useState("");
+  const [availabilities, setAvailabilities] = useState([]);
+  const location = useLocation();
 
-	// Do something with the username
-	useEffect(() => {
-		const searchParams = new URLSearchParams(location.search);
-		const username = searchParams.get("username");
-		// Do something with the username, e.g. display the user's name
-	}, [location]);
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const username = searchParams.get("username");
+    const savedAvailabilities = JSON.parse(localStorage.getItem(username));
+    if (savedAvailabilities) {
+      setAvailabilities(savedAvailabilities);
+    }
+  }, [location]);
 
-	const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const searchParams = new URLSearchParams(location.search);
     const username = searchParams.get("username");
@@ -30,20 +31,47 @@ const InputAvailabilitiesPage = () => {
       },
       body: JSON.stringify(newAvailability),
     });
-  
+
     if (response.ok) {
       setAvailabilities([...availabilities, newAvailability]);
       setDate("");
       setFromTime("");
       setToTime("");
+      localStorage.setItem(username, JSON.stringify([...availabilities, newAvailability]));
     } else {
       alert("There was an error saving your availability. Please try again.");
     }
   };
+
+  // Function to round a given time to the nearest 30 minutes
+  const roundToNearestThirtyMinutes = (time) => {
+    const [hours, minutes] = time.split(":");
+    const roundedMinutes = Math.round(minutes / 30) * 30;
+    const roundedHours = roundedMinutes === 60 ? parseInt(hours) + 1 : parseInt(hours);
+    return `${roundedHours < 10 ? "0" : ""}${roundedHours}:${roundedMinutes === 0 ? "00" : "30"}`;
+  };
+
+  // Event handler to update fromTime state with a rounded value
+  const handleFromTimeChange = (event) => {
+    const hours = event.target.value.split(":")[0];
+    const minutes = Math.floor(event.target.value.split(":")[1] / 30) * 30;
+    const roundedValue = `${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
+    setFromTime(roundedValue);
+  };
+  // Event handler to update toTime state with a rounded value
+  const handleToTimeChange = (event) => {
+	const hours = event.target.value.split(":")[0];
+	const minutes = Math.floor(event.target.value.split(":")[1] / 30) * 30;
+	const roundedValue = `${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
+	if (roundedValue < fromTime) {
+	  setToTime(fromTime);
+	} else {
+	  setToTime(roundedValue);
+	}
+  };
   
 
-
-  return (
+	return (
 		<>
 			<Container className="bg-secondary p-5 my-5 container-2">
 				<Form onSubmit={handleSubmit}>
@@ -55,88 +83,70 @@ const InputAvailabilitiesPage = () => {
 						<Col>
 							<Form.Group controlId="formDate">
 								<Form.Label>Date</Form.Label>
+								
 								<Form.Control
-									type="date"
-									className="form-control"
-									id="date"
-									value={date}
-									onChange={(event) => setDate(event.target.value)}
-									required
-								/>
-							</Form.Group>
-						</Col>
+  type="date"
+  value={date}
+  onChange={(e) => setDate(e.target.value)}
+  min={new Date().toISOString().split("T")[0]}
+  required
+/>
+</Form.Group>
+</Col>
+<Col>
+  <Form.Group controlId="formFromTime">
+    <Form.Label>From</Form.Label>
+    <Form.Control
+      type="time"
+      value={fromTime}
+      onChange={handleFromTimeChange}
+      required
+      step={1800} // set step to 1800 seconds (30 minutes)
+    />
+  </Form.Group>
+</Col>
+<Col>
+  <Form.Group controlId="formToTime">
+    <Form.Label>To</Form.Label>
+    <Form.Control
+      type="time"
+      value={toTime}
+      onChange={handleToTimeChange}
+      required
+      step={1800} // set step to 1800 seconds (30 minutes)
+    />
+  </Form.Group>
+</Col>
 
-						<Col>
-							<Form.Group>
-								<Form.Label>From</Form.Label>
-								<Form.Control
-									type="time"
-									className="form-control"
-									id="fromTime"
-									value={fromTime}
-									onChange={(event) => setFromTime(event.target.value)}
-									required
-								/>
-							</Form.Group>
-						</Col>
+         </Row>
+<Button type="submit">Submit</Button>
+			</Form>
 
-						<Col>
-							<Form.Group>
-								<Form.Label>To</Form.Label>
-								<Form.Control
-									type="time"
-									className="form-control"
-									id="toTime"
-									value={toTime}
-									onChange={(event) => setToTime(event.target.value)}
-									required
-								/>
-							</Form.Group>
-						</Col>
+			<Card.Title className="text-center my-3">
+				Available Times
+			</Card.Title>
 
-						<Button type="submit" className="d-grid gap-2 col-6 mx-auto mt-3">
-							Submit
-						</Button>
-					</Row>
-				</Form>
-
-				{/* {availabilities.length > 0 ? ( */}
-				<Table className="table table-striped mt-5">
-					<thead>
-						<tr>
-							<th>Date</th>
-							<th>From</th>
-							<th>To</th>
+			<Table striped bordered hover>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>From</th>
+						<th>To</th>
+					</tr>
+				</thead>
+				<tbody>
+					{availabilities.map((availability, index) => (
+						<tr key={index}>
+							<td>{availability.date}</td>
+							<td>{availability.fromTime}</td>
+							<td>{availability.toTime}</td>
 						</tr>
-					</thead>
-					<tbody>
-						{availabilities.map((availability, index) => (
-							<tr key={index}>
-								<td>{availability.date}</td>
-								<td>{availability.fromTime}</td>
-								<td>{availability.toTime}</td>
-							</tr>
-						))}
-					</tbody>
-				</Table>
-				{/* ) : (
-					<Card.Text className="text-center my-3">
-						Sorry! You have not found study-buddies yet.
-					</Card.Text>
-				)} */}
-
-				<Button
-					type="submit"
-					className="bg-dark d-grid gap-2 col-6 mx-auto mt-3"
-				>
-					View Matching Students
-				</Button>
-			</Container>
-		</>
-	);
+					))}
+				</tbody>
+			</Table>
+		</Container>
+	</>
+);
 };
 
 export default InputAvailabilitiesPage;
-
-
-
