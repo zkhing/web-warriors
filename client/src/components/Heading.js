@@ -1,5 +1,5 @@
 
-import { Container, Nav, Navbar} from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../images/logo1.png";
 
