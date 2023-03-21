@@ -83,10 +83,11 @@ const handleToTimeChange = (event) => {
 								<Form.Label>Date</Form.Label>
 								
 								<Form.Control
-type="date"
-value={date}
-onChange={(e) => setDate(e.target.value)}
-required
+  type="date"
+  value={date}
+  onChange={(e) => setDate(e.target.value)}
+  min={new Date().toISOString().split("T")[0]}
+  required
 />
 </Form.Group>
 </Col>
