@@ -140,6 +140,20 @@ const InputAvailabilitiesPage = () => {
 							<td>{availability.date}</td>
 							<td>{availability.fromTime}</td>
 							<td>{availability.toTime}</td>
+              <td>
+                <DeleteButton
+                  availability={availability}
+                  onDelete={(availabilityToDelete) =>
+                    setAvailabilities(
+                      availabilities.filter(
+                        (availability) =>
+                          availability !== availabilityToDelete
+                      )
+                    )
+                  }
+                />
+              </td>
+              
 						</tr>
 					))}
 				</tbody>
