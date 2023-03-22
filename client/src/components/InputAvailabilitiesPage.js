@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Card, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import DeleteAvailability from "./DeleteAvailability";
 
 const InputAvailabilitiesPage = () => {
   const [date, setDate] = useState("");
@@ -141,7 +142,7 @@ const InputAvailabilitiesPage = () => {
 							<td>{availability.fromTime}</td>
 							<td>{availability.toTime}</td>
               <td>
-                <DeleteButton
+                <DeleteAvailability
                   availability={availability}
                   onDelete={(availabilityToDelete) =>
                     setAvailabilities(
