@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Card, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeleteAvailability from "./DeleteAvailability";
 import Heading from "./Heading";
+import ViewMatchingStudents from "./ViewMatchingStudents";
 
 const InputAvailabilitiesPage = () => {
   const [date, setDate] = useState("");
@@ -158,9 +160,15 @@ const InputAvailabilitiesPage = () => {
 					</tbody>
 				</Table>
 
-				<Button className="bg-dark d-grid gap-2 col-6 mx-auto m-3" type="submit">
-					To View Matching Students
-				</Button>
+				<Link path="/view" element={<ViewMatchingStudents />}>
+					<Button
+						className="bg-dark d-grid gap-2 col-6 mx-auto m-3"
+						type="submit"
+					>
+						To View Matching Students
+					</Button>
+				</Link>
+        
 			</Container>
 		</>
 	);
