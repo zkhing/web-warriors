@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Card, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeleteAvailability from "./DeleteAvailability";
+import Heading from "./Heading";
 
 const InputAvailabilitiesPage = () => {
   const [date, setDate] = useState("");
@@ -74,6 +75,7 @@ const InputAvailabilitiesPage = () => {
 
 	return (
 		<>
+      <Heading />
 			<Container className="bg-secondary p-5 my-5 container-2">
 				<Form onSubmit={handleSubmit}>
 					<Card.Title className="text-center my-3">
@@ -154,7 +156,6 @@ const InputAvailabilitiesPage = () => {
                   }
                 />
               </td>
-              
 						</tr>
 					))}
 				</tbody>

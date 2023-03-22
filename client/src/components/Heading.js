@@ -19,7 +19,7 @@ function Heading() {
 				<Container className="d-flex justify-content-end">
 					<Nav href="#home">
 						<Nav.Link href="home">Home</Nav.Link>
-						<Nav.Link href="login">Log in</Nav.Link>
+						<Nav.Link href="#">About us</Nav.Link>
 						<Nav.Link href="logout">Log out</Nav.Link>
 					</Nav>
 				</Container>

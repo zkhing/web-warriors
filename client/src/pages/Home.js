@@ -25,7 +25,6 @@ export function Home() {
 	return (
 		<main role="main">
 			<div className="home"></div>
-
 			<div>
 				<h1 className="message" data-qa="message">
 					{message}

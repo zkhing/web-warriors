@@ -6,8 +6,6 @@ import "./components/LoginPage.css";
 import "./components/Hero.js";
 import Hero from "./components/Hero.js";
 
-
-
 const App = () => (
 	<Routes>
 		<Route path="/" element={<Hero />} />

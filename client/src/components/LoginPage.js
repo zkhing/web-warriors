@@ -31,22 +31,14 @@ function LoginPage() {
 
 	return (
 		<>
-			<Header />
 			<div className="d-flex justify-content-between mt-3">
-				<Card className="p-3" style={{ width: "50%" }}>
-					<Card.Img
-						className="img-thumbnail"
-						src={group}
-					/>
-				</Card>
-
 				<Card className="p-3" style={{ width: "50%" }}>
 					<Form onSubmit={handleSubmit}>
 						<Form.Group controlId="formEmail">
-							<Form.Label>Email address</Form.Label>
+							<Form.Label>Username</Form.Label>
 							<Form.Control
 								type="text"
-								placeholder="Username or Email"
+								placeholder="username"
 								value={username}
 								onChange={handleInputChange}
 							/>
