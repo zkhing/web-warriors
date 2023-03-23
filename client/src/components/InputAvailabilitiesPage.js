@@ -19,13 +19,13 @@ const InputAvailabilitiesPage = () => {
     if (savedAvailabilities) {
       setAvailabilities(savedAvailabilities);
     }
-  }, [location]);
+  }, [location]);   
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const searchParams = new URLSearchParams(location.search);
     const username = searchParams.get("username");
-    const newAvailability = { username, date, fromTime, toTime };
+    const newAvailability = { id: Date.now(), username, date, fromTime, toTime };
     const response = await fetch("/api/postavailabilities", {
       method: "POST",
       headers: {
@@ -44,6 +44,14 @@ const InputAvailabilitiesPage = () => {
       alert("There was an error saving your availability. Please try again.");
     }
   };
+
+  const handleDelete = (id) => {
+    const searchParams = new URLSearchParams(location.search);
+    const username = searchParams.get("username");
+    const updatedAvailabilities = availabilities.filter((availability) => availability.id !== id);
+    setAvailabilities(updatedAvailabilities);
+    localStorage.setItem(username, JSON.stringify(updatedAvailabilities));
+  }
 
   // Function to round a given time to the nearest 30 minutes
   const roundToNearestThirtyMinutes = (time) => {
