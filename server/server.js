@@ -93,8 +93,21 @@ else{
 	});
 });
   
-
-
+// DELETE
+router.delete("/deleteAvailability", (req, res) => {
+    const { username, date, fromTime, toTime } = req.body;
+    db.query(
+      "DELETE FROM availabilities WHERE username = $1 AND date = $2 AND from_time = $3 AND to_time = $4",
+      [username, date, fromTime, toTime],
+      (err, result) => {
+        if (err) {
+          res.send("Failed to delete availability, please try again!");
+        } else {
+          res.send(`Availability for ${username}, ${date}, ${fromTime} to ${toTime} has been deleted successfully.`);
+        }
+      }
+    );
+  });
 
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
