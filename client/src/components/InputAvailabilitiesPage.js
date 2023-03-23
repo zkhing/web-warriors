@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Card, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeleteAvailability from "./DeleteAvailability";
-import Heading from "./Heading";
-import ViewMatchingStudents from "./ViewMatchingStudents";
+// import Heading from "./Heading";
+// import ViewMatchingStudents from "./ViewMatchingStudents";
 
 const InputAvailabilitiesPage = () => {
   const [date, setDate] = useState("");
@@ -48,12 +48,12 @@ const InputAvailabilitiesPage = () => {
   };
 
   // Function to round a given time to the nearest 30 minutes
-  const roundToNearestThirtyMinutes = (time) => {
-    const [hours, minutes] = time.split(":");
-    const roundedMinutes = Math.round(minutes / 30) * 30;
-    const roundedHours = roundedMinutes === 60 ? parseInt(hours) + 1 : parseInt(hours);
-    return `${roundedHours < 10 ? "0" : ""}${roundedHours}:${roundedMinutes === 0 ? "00" : "30"}`;
-  };
+  // const roundToNearestThirtyMinutes = (time) => {
+  //   const [hours, minutes] = time.split(":");
+  //   const roundedMinutes = Math.round(minutes / 30) * 30;
+  //   const roundedHours = roundedMinutes === 60 ? parseInt(hours) + 1 : parseInt(hours);
+  //   return `${roundedHours < 10 ? "0" : ""}${roundedHours}:${roundedMinutes === 0 ? "00" : "30"}`;
+  // };
 
   // Event handler to update fromTime state with a rounded value
   const handleFromTimeChange = (event) => {
@@ -77,7 +77,7 @@ const InputAvailabilitiesPage = () => {
 
 	return (
 		<>
-			<Heading />
+			{/* <Heading /> */}
 			<Container className="bg-secondary p-5 my-5 container-2">
 				<Form onSubmit={handleSubmit}>
 					<Card.Title className="text-center my-3">
@@ -134,6 +134,7 @@ const InputAvailabilitiesPage = () => {
 							<th>Date</th>
 							<th>From</th>
 							<th>To</th>
+							<th>Delete</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -160,7 +161,7 @@ const InputAvailabilitiesPage = () => {
 					</tbody>
 				</Table>
 
-				<Link path="/view" element={<ViewMatchingStudents />}>
+				<Link to="/ViewMatchingStudents">
 					<Button
 						className="bg-dark d-grid gap-2 col-6 mx-auto m-3"
 						type="submit"
@@ -168,7 +169,6 @@ const InputAvailabilitiesPage = () => {
 						To View Matching Students
 					</Button>
 				</Link>
-        
 			</Container>
 		</>
 	);

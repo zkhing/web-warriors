@@ -1,35 +1,54 @@
-import { Card, Table } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-function ViewMatchingStudents() {
-	// const [availabilities, setAvailabilities] = useState([]);
-
+import React, { useState, useEffect } from "react";
+function AvailabilityTable(props) {
+	const [availabilities, setAvailabilities] = useState([]);
+	const [loading, setLoading] = useState(true);
+	useEffect(() => {
+		async function fetchAvailabilities() {
+			const response = await fetch("/api/availabilities");
+			const data = await response.json();
+			setAvailabilities(data);
+			setLoading(false);
+		}
+		fetchAvailabilities();
+	}, []);
+	if (loading) {
+		return <div>Loading...</div>;
+	}
 	return (
-		<>
-			<Card.Title className="text-center my-3">
-				View Matching Students
-			</Card.Title>
-
-			<Table striped bordered hover>
-				<thead>
-					<tr>
-						<th>Date</th>
-						<th>From</th>
-						<th>To</th>
+		<table>
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Date</th>
+					<th>From Time</th>
+					<th>To Time</th>
+					<th>Matching Users</th>
+				</tr>
+			</thead>
+			<tbody>
+				{availabilities.map((availability) => (
+					<tr key={availability.id}>
+						<td>{availability.username}</td>
+						<td>{availability.date}</td>
+						<td>{availability.from_time}</td>
+						<td>{availability.to_time}</td>
+						<td>
+							<button
+								onClick={() =>
+									fetch(
+										`/api/matchingAvailabilities?date=${availability.date}&from_time=${availability.from_time}&to_time=${availability.to_time}`
+									)
+										.then((response) => response.json())
+										.then((data) => console.log(data))
+								}
+							>
+								Show matching users
+							</button>
+						</td>
 					</tr>
-				</thead>
-				<tbody>
-					{/* {availabilities.map((availability, index) => (
-<tr key={index}>
-<td>{availability.date}</td>
-<td>{availability.fromTime}</td>
-<td>{availability.toTime}</td>
-</tr>
-))} */}
-				</tbody>
-			</Table>
-		</>
+				))}
+			</tbody>
+		</table>
 	);
 }
-
-export default ViewMatchingStudents;
+export default AvailabilityTable;
