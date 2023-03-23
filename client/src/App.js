@@ -5,6 +5,7 @@ import About from "./pages/About";
 import "./components/LoginPage.css";
 import "./components/Hero.js";
 import Hero from "./components/Hero.js";
+import AboutUs from "./components/AboutUs";
 import ViewMatchingStudents from "./components/ViewMatchingStudents";
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
 		/>
 		<Route path="/ViewMatchingStudents" element={<ViewMatchingStudents />} />
 		<Route path="/login" element={<LoginPage />} />
+		<Route path="/AboutUs" element = {<AboutUs />} /> 
 		<Route path="/about/this/site" element={<About />} />
 	</Routes>
 );

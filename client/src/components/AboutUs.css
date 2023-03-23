@@ -1,0 +1,11 @@
+.content {
+  margin: 15px;  
+}
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+    background-color: aquamarine;
+}
+img {
+    width: 15%;
+}

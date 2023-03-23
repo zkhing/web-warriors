@@ -2,6 +2,7 @@ import { Container, Nav, Navbar, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../images/logo1.png";
 
+
 function HeadingHomePage() {
     return (
         <>
@@ -19,7 +20,7 @@ function HeadingHomePage() {
                 <Container className="d-flex justify-content-end">
                     <Nav href="#home">
                         <Nav.Link href="home">Home</Nav.Link>
-                        <Nav.Link href="#">About us</Nav.Link>
+                        <Nav.Link href="AboutUs">About us</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
