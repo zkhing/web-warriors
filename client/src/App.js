@@ -5,6 +5,7 @@ import About from "./pages/About";
 import "./components/LoginPage.css";
 import "./components/Hero.js";
 import Hero from "./components/Hero.js";
+import AboutUs from "./components/AboutUs";
 
 const App = () => (
 	<Routes>
@@ -12,6 +13,7 @@ const App = () => (
 		<Route path="/home" element={<Hero />} />
 		<Route path="/login" element={<LoginPage />} />
 		<Route path="/InputAvailabilitiesPage" element={<InputAvailabilitiesPage />} />
+		<Route path="/AboutUs" element = {<AboutUs />} /> 
 		<Route path="/about/this/site" element={<About />} />
 	</Routes>
 );
