@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Card, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeleteAvailability from "./DeleteAvailability";
-import Heading from "./Heading";
+// import Heading from "./Heading";
+// import ViewMatchingStudents from "./ViewMatchingStudents";
 
 const InputAvailabilitiesPage = () => {
   const [date, setDate] = useState("");
@@ -53,13 +55,13 @@ const InputAvailabilitiesPage = () => {
     localStorage.setItem(username, JSON.stringify(updatedAvailabilities));
   }
 
-  // Function to round a given time to the nearest 30 minutes
-  const roundToNearestThirtyMinutes = (time) => {
-    const [hours, minutes] = time.split(":");
-    const roundedMinutes = Math.round(minutes / 30) * 30;
-    const roundedHours = roundedMinutes === 60 ? parseInt(hours) + 1 : parseInt(hours);
-    return `${roundedHours < 10 ? "0" : ""}${roundedHours}:${roundedMinutes === 0 ? "00" : "30"}`;
-  };
+  //Function to round a given time to the nearest 30 minutes
+  // const roundToNearestThirtyMinutes = (time) => {
+  //   const [hours, minutes] = time.split(":");
+  //   const roundedMinutes = Math.round(minutes / 30) * 30;
+  //   const roundedHours = roundedMinutes === 60 ? parseInt(hours) + 1 : parseInt(hours);
+  //   return `${roundedHours < 10 ? "0" : ""}${roundedHours}:${roundedMinutes === 0 ? "00" : "30"}`;
+  // };
 
   // Event handler to update fromTime state with a rounded value
   const handleFromTimeChange = (event) => {
@@ -83,94 +85,101 @@ const InputAvailabilitiesPage = () => {
 
 	return (
 		<>
-      <Heading />
+			{/* <Heading /> */}
 			<Container className="bg-secondary p-5 my-5 container-2">
 				<Form onSubmit={handleSubmit}>
 					<Card.Title className="text-center my-3">
-						User Input Availabilities
+						Your Availabilities
 					</Card.Title>
 
 					<Row>
 						<Col>
 							<Form.Group controlId="formDate">
 								<Form.Label>Date</Form.Label>
-								
+
 								<Form.Control
-  type="date"
-  value={date}
-  onChange={(e) => setDate(e.target.value)}
-  min={new Date().toISOString().split("T")[0]}
-  required
-/>
-</Form.Group>
-</Col>
-<Col>
-  <Form.Group controlId="formFromTime">
-    <Form.Label>From</Form.Label>
-    <Form.Control
-      type="time"
-      value={fromTime}
-      onChange={handleFromTimeChange}
-      required
-      step={1800} // set step to 1800 seconds (30 minutes)
-    />
-  </Form.Group>
-</Col>
-<Col>
-  <Form.Group controlId="formToTime">
-    <Form.Label>To</Form.Label>
-    <Form.Control
-      type="time"
-      value={toTime}
-      onChange={handleToTimeChange}
-      required
-      step={1800} // set step to 1800 seconds (30 minutes)
-    />
-  </Form.Group>
-</Col>
+									type="date"
+									value={date}
+									onChange={(e) => setDate(e.target.value)}
+									min={new Date().toISOString().split("T")[0]}
+									required
+								/>
+							</Form.Group>
+						</Col>
+						<Col>
+							<Form.Group controlId="formFromTime">
+								<Form.Label>From</Form.Label>
+								<Form.Control
+									type="time"
+									value={fromTime}
+									onChange={handleFromTimeChange}
+									required
+									step={1800} // set step to 1800 seconds (30 minutes)
+								/>
+							</Form.Group>
+						</Col>
+						<Col>
+							<Form.Group controlId="formToTime">
+								<Form.Label>To</Form.Label>
+								<Form.Control
+									type="time"
+									value={toTime}
+									onChange={handleToTimeChange}
+									required
+									step={1800} // set step to 1800 seconds (30 minutes)
+								/>
+							</Form.Group>
+						</Col>
+					</Row>
+					<Button className="d-grid gap-2 col-3 mx-auto m-3" type="submit">
+						Submit
+					</Button>
+				</Form>
 
-         </Row>
-<Button type="submit">Submit</Button>
-			</Form>
-
-			<Card.Title className="text-center my-3">
-				Available Times
-			</Card.Title>
-
-			<Table striped bordered hover>
-				<thead>
-					<tr>
-						<th>Date</th>
-						<th>From</th>
-						<th>To</th>
-					</tr>
-				</thead>
-				<tbody>
-					{availabilities.map((availability, index) => (
-						<tr key={index}>
-							<td>{availability.date}</td>
-							<td>{availability.fromTime}</td>
-							<td>{availability.toTime}</td>
-              <td>
-                <DeleteAvailability
-                  availability={availability}
-                  onDelete={(availabilityToDelete) =>
-                    setAvailabilities(
-                      availabilities.filter(
-                        (availability) =>
-                          availability !== availabilityToDelete
-                      )
-                    )
-                  }
-                />
-              </td>
+				<Table striped bordered hover>
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>From</th>
+							<th>To</th>
+							<th>Delete</th>
 						</tr>
-					))}
-				</tbody>
-			</Table>
-		</Container>
-	</>
-);
+					</thead>
+					<tbody>
+						{availabilities.map((availability, index) => (
+							<tr key={index}>
+								<td>{availability.date}</td>
+								<td>{availability.fromTime}</td>
+								<td>{availability.toTime}</td>
+								<td>
+									<DeleteAvailability
+										availability={availability}
+										onDelete={(availabilityToDelete) =>
+											setAvailabilities(
+												availabilities.filter(
+													(availability) =>
+														availability !== availabilityToDelete
+												)
+											)
+										}
+									/>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</Table>
+
+				<Link to="/ViewMatchingStudents">
+					<Button
+						className="bg-dark d-grid gap-2 col-6 mx-auto m-3"
+						type="submit"
+					>
+						To View Matching Students
+					</Button>
+				</Link>
+			</Container>
+		</>
+	);
 };
 
 export default InputAvailabilitiesPage;

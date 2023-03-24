@@ -7,6 +7,7 @@ import "./components/Hero.js";
 import Hero from "./components/Hero.js";
 import AboutUs from "./components/AboutUs";
 import Contact from "./Contact";
+import ViewMatchingStudents from "./components/ViewMatchingStudents";
 
 
 const App = () => (
@@ -18,7 +19,9 @@ const App = () => (
 			path="/InputAvailabilitiesPage"
 			element={<InputAvailabilitiesPage />}
 		/>
-		<Route path="/AboutUs" element={<AboutUs />} />
+		<Route path="/ViewMatchingStudents" element={<ViewMatchingStudents />} />
+		<Route path="/login" element={<LoginPage />} />
+		<Route path="/AboutUs" element = {<AboutUs />} /> 
 		<Route path="/about/this/site" element={<About />} />
 	</Routes>
 );
