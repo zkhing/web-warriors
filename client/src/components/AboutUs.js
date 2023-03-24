@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import Heading from "./Heading";
+import Footer from "./Footer";
 
 const teamMembers = [
 	{
@@ -97,14 +98,10 @@ function About() {
 			{showProject && (
 				<>
 					<Card className="bg-info p-5">
-						<h2
-							style={{ textAlign: "center", marginTop: "20px"}}
-						>
+						<h2 style={{ textAlign: "center", marginTop: "20px" }}>
 							OUR PROJECT
 						</h2>
-						<p
-							style={{ fontSize: "23px" }}
-						>
+						<p style={{ fontSize: "23px" }}>
 							Our team is dedicated to simplifying the process of coordinating
 							work for trainees from diverse backgrounds who work
 							collaboratively throughout the week. We understand that scheduling
@@ -125,6 +122,7 @@ function About() {
 					</Card>
 				</>
 			)}
+			<Footer />
 		</div>
 	);
 }
