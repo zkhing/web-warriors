@@ -55,7 +55,7 @@ const InputAvailabilitiesPage = () => {
     localStorage.setItem(username, JSON.stringify(updatedAvailabilities));
   }
 
-  // Function to round a given time to the nearest 30 minutes
+  //Function to round a given time to the nearest 30 minutes
   // const roundToNearestThirtyMinutes = (time) => {
   //   const [hours, minutes] = time.split(":");
   //   const roundedMinutes = Math.round(minutes / 30) * 30;
