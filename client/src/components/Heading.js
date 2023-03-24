@@ -20,7 +20,7 @@ function Heading() {
 					<Nav href="#home">
 						<Nav.Link href="home">Home</Nav.Link>
 						<Nav.Link href="AboutUs">About us</Nav.Link>
-						<Nav.Link href="logout">Log out</Nav.Link>
+						{/* <Nav.Link href="logout">Log out</Nav.Link> */}
 					</Nav>
 				</Container>
 			</Navbar>
