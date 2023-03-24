@@ -1,7 +1,7 @@
 
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "../images/logo1.png";
+import logo from "../images/logo.png";
 
 function Heading() {
   return (
