@@ -6,7 +6,9 @@ import "./components/LoginPage.css";
 import "./components/Hero.js";
 import Hero from "./components/Hero.js";
 import AboutUs from "./components/AboutUs";
+import Contact from "./Contact";
 import ViewMatchingStudents from "./components/ViewMatchingStudents";
+
 
 const App = () => (
 	<Routes>

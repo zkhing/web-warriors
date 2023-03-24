@@ -1,12 +1,12 @@
 
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "../images/logo1.png";
+import logo from "../images/logo.png";
 
 function Heading() {
   return (
 		<>
-			<Navbar bg="secondary" variant="dark">
+			<Navbar className="bg-light">
 				<Navbar.Brand href="#home">
 					<img
 						alt="CYF Logo"
@@ -20,7 +20,7 @@ function Heading() {
 					<Nav href="#home">
 						<Nav.Link href="home">Home</Nav.Link>
 						<Nav.Link href="AboutUs">About us</Nav.Link>
-						<Nav.Link href="logout">Log out</Nav.Link>
+						<Nav.Link href="contact">Contact</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>
