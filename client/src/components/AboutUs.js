@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import Heading from "./Heading";
 import Footer from "./Footer";
 
+
 const teamMembers = [
 	{
 		id: 1,
@@ -59,13 +60,13 @@ function About() {
 	}, [showMembers]);
 
 	return (
-		<div style={{ backgroundColor: "grey", minHeight: "100vh" }}>
+		<div style={{ backgroundColor: "#eddcd2", minHeight: "100vh" }}>
 			<Heading />
 			<div style={{ padding: "20px", color: "black" }}>
-				<h1 style={{ textAlign: "center", marginTop: "80px", color: "white" }}>
+				<h1 style={{ textAlign: "center", marginTop: "80px"}}>
 					WHO WE ARE
 				</h1>
-				<p style={{ textAlign: "center", color: "white", fontSize: "28px" }}>
+				<p style={{ textAlign: "center", fontSize: "28px" }}>
 					We are team WEB-WARRIORS.
 				</p>
 			</div>
@@ -97,7 +98,10 @@ function About() {
 			)}
 			{showProject && (
 				<>
-					<Card className="bg-info p-5">
+					<Card
+						className="p-5"
+						style={{ backgroundColor: "#e8e8e4", minHeight: "100vh" }}
+					>
 						<h2 style={{ textAlign: "center", marginTop: "20px" }}>
 							OUR PROJECT
 						</h2>

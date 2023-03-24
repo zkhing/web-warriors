@@ -11,12 +11,18 @@ function Hero() {
   return (
 		<>
 			<Navbar />
-			<div className="d-flex justify-content-between mt-3">
-				<Card className="p-3 bg-info" style={{ width: "50%" }}>
+			<div className="d-flex justify-content-between">
+				<Card
+					className="p-3"
+					style={{ backgroundColor: "#e8e8e4", width: "50%" }}
+				>
 					<Card.Img className="img-thumbnail" src={group} />
 				</Card>
 
-				<Card className="p-4 bg-info" style={{ width: "50%" }}>
+				<Card
+					className="p-4"
+					style={{ backgroundColor: "#e8e8e4", width: "50%" }}
+				>
 					<h1>Welcome to Study Buddies!</h1>
 					<Card.Text className="mt-3">
 						<p>
