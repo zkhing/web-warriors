@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Button, Form, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./Heading";
-import group from "../images/group-img.jpg";
+
 
 function LoginPage() {
 	const [username, setUsername] = useState("");
@@ -36,8 +35,8 @@ function LoginPage() {
 
 	return (
 		<>
-			<div className="d-flex justify-content-between mt-3">
-				<Card className="p-3" style={{ width: "50%" }}>
+			{/* <div className="d-flex justify-content-between mt-3"> */}
+				<Card className="p-3">
 					<Form onSubmit={handleSubmit}>
 						<Form.Group controlId="formEmail">
 							<Form.Label>Username</Form.Label>
@@ -54,7 +53,7 @@ function LoginPage() {
 						</Button>
 					</Form>
 				</Card>
-			</div>
+			{/* </div> */}
 		</>
 	);
 }
