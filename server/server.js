@@ -109,6 +109,35 @@ router.delete("/deleteAvailability", (req, res) => {
     );
   });
 
+
+
+//   using CurrentUserMatching Component
+
+  router.get('/availabilities1', (req, res) => {
+	const { username } = req.query;
+	let query = 'SELECT * FROM availabilities';
+	let params = [];
+  
+	if (username) {
+	  query += ' WHERE username = $1';
+	  params.push(username);
+	}
+  
+	db.query(query, params, (err, result) => {
+	  if (err) {
+		res.status(500).json(err);
+	  } else {
+		res.json(result.rows);
+	  }
+	});
+  })
+
+
+  
+  
+
+
+
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
 connectDb().then(() => server.listen(config.port));

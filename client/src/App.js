@@ -8,7 +8,7 @@ import Hero from "./components/Hero.js";
 import AboutUs from "./components/AboutUs";
 import Contact from "./Contact";
 import ViewAllAvailabilities from "./components/ViewAllAvailabilities";
-
+import CurrentUserMatching from "./components/CurrentUserMatching";
 
 const App = () => (
 	<Routes>
@@ -20,6 +20,7 @@ const App = () => (
 			element={<InputAvailabilitiesPage />}
 		/>
 		<Route path="/ViewAllAvailabilities" element={<ViewAllAvailabilities />} />
+		<Route path="/CurrentUserMatching" element={<CurrentUserMatching />} />
 		<Route path="/login" element={<LoginPage />} />
 		<Route path="/AboutUs" element = {<AboutUs />} /> 
 		<Route path="/about/this/site" element={<About />} />
