@@ -169,7 +169,7 @@ const InputAvailabilitiesPage = () => {
 					</tbody>
 				</Table>
 
-				<Link to="/ViewMatchingStudentsSpecific">
+				<Link to={`/CurrentUserMatching?username=${location.search.split("=")[1]}`}>
 					<Button
 						className="bg-dark d-grid gap-2 col-6 mx-auto m-3"
 						type="submit"
