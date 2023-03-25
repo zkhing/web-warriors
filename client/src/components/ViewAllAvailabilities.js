@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function AvailabilityTable(props) {
+function ViewAllAvailabilities(props) {
 	const [availabilities, setAvailabilities] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [selectedAvailability, setSelectedAvailability] = useState(null);
@@ -53,9 +53,9 @@ function AvailabilityTable(props) {
 		<table className="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th style={{ fontSize: "1.5rem" }} className="text-center">
+					{/* <th style={{ fontSize: "1.5rem" }} className="text-center">
 						Username
-					</th>
+					</th> */}
 					<th style={{ fontSize: "1.5rem" }} className="text-center">
 						Date
 					</th>
@@ -73,9 +73,9 @@ function AvailabilityTable(props) {
 			<tbody>
 				{availabilities.map((availability) => (
 					<tr key={availability.id}>
-						<td className="text-center">
+						{/* <td className="text-center">
 							{availability.username || availability.email}
-						</td>
+						</td> */}
 						<td className="text-center">{availability.date}</td>
 						<td className="text-center">{availability.from_time}</td>
 						<td className="text-center">{availability.to_time}</td>
@@ -105,4 +105,4 @@ function AvailabilityTable(props) {
 	);
 }
 
-export default AvailabilityTable;
+export default ViewAllAvailabilities;

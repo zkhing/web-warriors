@@ -169,12 +169,24 @@ const InputAvailabilitiesPage = () => {
 					</tbody>
 				</Table>
 
-				<Link to="/ViewMatchingStudents">
+				<Link to="/ViewMatchingStudentsSpecific">
 					<Button
 						className="bg-dark d-grid gap-2 col-6 mx-auto m-3"
 						type="submit"
 					>
-						To View Matching Students
+						View Matching Availabilities
+					</Button>
+				</Link>
+
+
+
+
+				<Link to="/ViewAllAvailabilities">
+					<Button
+						className="bg-dark d-grid gap-2 col-6 mx-auto m-3"
+						type="submit"
+					>
+						View All Availabilities
 					</Button>
 				</Link>
 			</Container>
