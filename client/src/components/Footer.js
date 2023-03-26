@@ -7,7 +7,7 @@ function Footer() {
 	return (
 		<footer className="bg-light py-4">
 			<Container>
-				<Row className="justify-content-center">
+				{/* <Row className="justify-content-center">
 					<Col>
 						<h4>Contact Us</h4>
 						<p>
@@ -18,7 +18,7 @@ function Footer() {
 						</p>
 					</Col>
 					<Col>
-						<Row>
+						<Row> */}
 							<h4>Follow Us</h4>
 							
 								<a href="https://twitter.com/CodeYourFuture">Twitter</a>
@@ -29,15 +29,15 @@ function Footer() {
 									Instagram
 								</a>
 							
-						</Row>
+						{/* </Row>
 					</Col>
-				</Row>
+				</Row> */}
 
-				<Row>
-					<Col>
-						<p className="text-center">&copy; 2023 Web-warriors.</p>
-					</Col>
-				</Row>
+				{/* <Row>
+					<Col> */}
+						<p className="text-center">&copy; 2023 web-warriors.</p>
+					{/* </Col>
+				</Row> */}
 			</Container>
 		</footer>
 	);
