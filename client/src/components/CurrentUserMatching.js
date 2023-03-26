@@ -60,7 +60,7 @@ const CurrentUserMatching = () => {
 						{availabilities.map((availability, index) => (
 							<tr key={index}>
                 <td >{new Date(availability.date)
-                  .toLocaleDateString("en-GB", { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })}
+                  .toLocaleDateString("en-GB", { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
                 </td>
                 <td>
                   {new Date(`1970-01-01T${availability.from_time}Z`)

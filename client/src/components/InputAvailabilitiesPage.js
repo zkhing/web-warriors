@@ -149,7 +149,8 @@ const InputAvailabilitiesPage = () => {
 					<tbody>
 						{availabilities.map((availability, index) => (
 							<tr key={index}>
-								<td className="text-center">{new Date(availability.date).toLocaleDateString("en-GB", { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })}</td>
+								<td className="text-center">{new Date(availability.date)
+									.toLocaleDateString("en-GB", { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}</td>
 								<td className="text-center">{new Date(`1970-01-01T${availability.fromTime}Z`)
 									.toLocaleTimeString("en-US", { hour12: true, hour: "numeric", minute: "numeric" })}
 								</td>
