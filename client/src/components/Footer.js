@@ -1,45 +1,28 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-
+import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 function Footer() {
 	return (
-		<footer className="bg-light py-4">
-			<Container>
-				<Row className="justify-content-center">
-					<Col>
-						<h4>Contact Us</h4>
-						<p>
-							Email:{" "}
-							<a href="contact@codeyourfuture.io <contact@codeyourfuture.io>;">
-								info@example.com
-							</a>
-						</p>
-					</Col>
-					<Col>
-						<Row>
-							<h4>Follow Us</h4>
-							
-								<a href="https://twitter.com/CodeYourFuture">Twitter</a>
-								<a href="https://www.facebook.com/codeyourfuture.io">
-									Facebook
-								</a>
-								<a href="https://www.instagram.com/codeyourfuture_/">
-									Instagram
-								</a>
-							
-						</Row>
-					</Col>
-				</Row>
+			<Container className="bg-light pt-4">
+				<h4 className="text-center">Follow Us</h4>
+				
+				<div className="d-flex justify-content-evenly fa-2x">
+					<a href="https://twitter.com/CodeYourFuture">
+						<FontAwesomeIcon icon={faFacebook} />
+					</a>
+					<a href="https://www.instagram.com/codeyourfuture_/">
+						<FontAwesomeIcon icon={faInstagram} />
+					</a>
+					<a href="https://twitter.com/CodeYourFuture">
+						<FontAwesomeIcon icon={faTwitter} />
+					</a>
+				</div>
 
-				<Row>
-					<Col>
-						<p className="text-center">&copy; 2023 Web-warriors.</p>
-					</Col>
-				</Row>
+				<p className="text-center">&copy; 2023 web-warriors.</p>
 			</Container>
-		</footer>
 	);
 }
 export default Footer;

@@ -29,7 +29,7 @@ function Hero() {
 							Tired of spending your time trying to organise study groups with
 							your peers?
 							<br /> You are in the right place! All you have to do is input
-							your availabilities and view wo else is available is your cohort
+							your availabilities and view who else is available is your cohort
 							at your same time.
 						</p>
 						<p>
@@ -37,7 +37,7 @@ function Hero() {
 							set one up
 						</p>
 						<p>
-							If you have username, you can get started by iserting it below:
+							If you have username, you can get started by inserting it below:
 						</p>
 					</Card.Text>
 
