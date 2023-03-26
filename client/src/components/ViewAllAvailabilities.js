@@ -81,13 +81,13 @@ function ViewAllAvailabilities(props) {
 							{availability.username || availability.email}
 						</td> */}
 							<td className="text-center">{new Date(availability.date)
-							.toLocaleDateString("en-GB")}
+								.toLocaleDateString("en-GB", { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })}
 							</td>
 							<td className="text-center">{new Date(`1970-01-01T${availability.from_time}Z`)
-							.toLocaleTimeString("en-US", { hour12: false, hour: "numeric", minute: "numeric" })}
+								.toLocaleTimeString("en-US", { hour12: true, hour: "numeric", minute: "numeric" })}
 							</td>
 							<td className="text-center">{new Date(`1970-01-01T${availability.to_time}Z`)
-							.toLocaleTimeString("en-US", { hour12: false, hour: "numeric", minute: "numeric" })}
+								.toLocaleTimeString("en-US", { hour12: true, hour: "numeric", minute: "numeric" })}
 							</td>
 							<td className="text-center">
 								<button
