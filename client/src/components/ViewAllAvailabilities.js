@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Heading from "./Heading";
+import Footer from "./Footer";
 
 function ViewAllAvailabilities(props) {
 	const [availabilities, setAvailabilities] = useState([]);
@@ -50,58 +52,62 @@ function ViewAllAvailabilities(props) {
 	}
 
 	return (
-		<table className="table table-striped table-hover">
-			<thead>
-				<tr>
-					{/* <th style={{ fontSize: "1.5rem" }} className="text-center">
+		<div>
+			<Heading />
+			<table className="table table-striped table-hover mt-5">
+				<thead>
+					<tr>
+						{/* <th style={{ fontSize: "1.5rem" }} className="text-center">
 						Username
 					</th> */}
-					<th style={{ fontSize: "1.5rem" }} className="text-center">
-						Date
-					</th>
-					<th style={{ fontSize: "1.5rem" }} className="text-center">
-						From Time
-					</th>
-					<th style={{ fontSize: "1.5rem" }} className="text-center">
-						To Time
-					</th>
-					<th style={{ fontSize: "1.5rem" }} className="text-center">
-						Matching Users
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				{availabilities.map((availability) => (
-					<tr key={availability.id}>
-						{/* <td className="text-center">
+						<th style={{ fontSize: "1.5rem" }} className="text-center">
+							Date
+						</th>
+						<th style={{ fontSize: "1.5rem" }} className="text-center">
+							From Time
+						</th>
+						<th style={{ fontSize: "1.5rem" }} className="text-center">
+							To Time
+						</th>
+						<th style={{ fontSize: "1.5rem" }} className="text-center">
+							Matching Users
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{availabilities.map((availability) => (
+						<tr key={availability.id}>
+							{/* <td className="text-center">
 							{availability.username || availability.email}
 						</td> */}
-						<td className="text-center">{availability.date}</td>
-						<td className="text-center">{availability.from_time}</td>
-						<td className="text-center">{availability.to_time}</td>
-						<td className="text-center">
-							<button
-								type="button"
-								className="btn btn-primary"
-								onClick={() => handleShowMatchingUsersClick(availability)}
-							>
-								Show matching users
-							</button>
-							{selectedAvailability === availability &&
-							matchingUserNames.length > 0 ? (
-								<ul className="list-unstyled matching-users">
-									{matchingUserNames.map((userName) => (
-										<li key={userName}>{userName}</li>
-									))}
-								</ul>
-							) : (
-								<div className="no-matching-users">No matching users</div>
-							)}
-						</td>
-					</tr>
-				))}
-			</tbody>
-		</table>
+							<td className="text-center">{availability.date}</td>
+							<td className="text-center">{availability.from_time}</td>
+							<td className="text-center">{availability.to_time}</td>
+							<td className="text-center">
+								<button
+									type="button"
+									className="btn btn-primary"
+									onClick={() => handleShowMatchingUsersClick(availability)}
+								>
+									Show matching users
+								</button>
+								{selectedAvailability === availability &&
+								matchingUserNames.length > 0 ? (
+									<ul className="list-unstyled matching-users">
+										{matchingUserNames.map((userName) => (
+											<li key={userName}>{userName}</li>
+										))}
+									</ul>
+								) : (
+									<div className="no-matching-users">No matching users</div>
+								)}
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+			<Footer />
+		</div>
 	);
 }
 

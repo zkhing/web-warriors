@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Container, Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Heading from "./Heading";
+import Footer from "./Footer";
 
 const CurrentUserMatching = () => {
   const [availabilities, setAvailabilities] = useState([]);
@@ -41,31 +43,35 @@ const CurrentUserMatching = () => {
   }, [location]);
 
   return (
-    <Container className="bg-secondary p-5 my-5 container-2">
-      <h1>Your Matches</h1>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Available Trainees</th>
-          </tr>
-        </thead>
-        <tbody>
-          {availabilities.map((availability, index) => (
-            <tr key={index}>
-              <td>{availability.date}</td>
-              <td>{availability.from_time}</td>
-              <td>{availability.to_time}</td>
-              <td>{availability.matchingUsers.join(", ")}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-      <Button onClick={() => window.history.back()}>Go Back</Button>
-    </Container>
-  );
+		<>
+			<Heading />
+			<Container className="bg-secondary p-5 my-5 container-2">
+				<h1>Your Matches</h1>
+				<Table striped bordered hover>
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>From</th>
+							<th>To</th>
+							<th>Available Trainees</th>
+						</tr>
+					</thead>
+					<tbody>
+						{availabilities.map((availability, index) => (
+							<tr key={index}>
+								<td>{availability.date}</td>
+								<td>{availability.from_time}</td>
+								<td>{availability.to_time}</td>
+								<td>{availability.matchingUsers.join(", ")}</td>
+							</tr>
+						))}
+					</tbody>
+				</Table>
+				<Button onClick={() => window.history.back()}>Go Back</Button>
+			</Container>
+      <Footer />
+		</>
+	);
 };
 
 export default CurrentUserMatching;

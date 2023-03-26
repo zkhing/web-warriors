@@ -5,6 +5,7 @@ import { Container, Row, Col, Button, Form, Card, Table } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeleteAvailability from "./DeleteAvailability";
 import Heading from "./Heading";
+import Footer from "./Footer";
 // import ViewMatchingStudents from "./ViewMatchingStudents";
 
 const InputAvailabilitiesPage = () => {
@@ -179,9 +180,7 @@ const InputAvailabilitiesPage = () => {
 				</Link>
 
 
-
-
-				<Link to="/ViewAllAvailabilities">
+    			<Link to="/ViewAllAvailabilities">
 					<Button
 						className="bg-dark d-grid gap-2 col-6 mx-auto m-3"
 						type="submit"
@@ -190,6 +189,7 @@ const InputAvailabilitiesPage = () => {
 					</Button>
 				</Link>
 			</Container>
+			<Footer />
 		</>
 	);
 };
