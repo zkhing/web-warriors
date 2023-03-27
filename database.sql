@@ -2,7 +2,8 @@ CREATE TABLE users(
  username VARCHAR(50) PRIMARY KEY,
  first_name VARCHAR(50) NOT NULL,
  surname VARCHAR(50) NOT NULL,
- email VARCHAR(100) NOT NULL
+ email VARCHAR(100) NOT NULL,
+ cohort VARCHAR(50) NOT NULL
  );
 
 CREATE TABLE availabilities (
@@ -12,14 +13,16 @@ CREATE TABLE availabilities (
  from_time TIME NOT NULl,
  to_time TIME NOT NULL
  );
- INSERT INTO users (username, first_name, surname, email)
+ INSERT INTO users (username, first_name, surname, email, cohort)
   VALUES
- ('@Barry', 'Mamadou Dian', 'Barry', 'diams29@gmail.com'),
- ('@Sahar', 'Sahar', 'Karim', 'saharkarim@example.com'),
- ('@Davood', 'Davood', 'Moradi', 'janedoe@example.com'),
- ('@Zaw', 'Zaw', 'Khing', 'zaw@example.com'),
- ('Mik22', 'Miguel', 'gomes', 'gomes@example.com'),
- ('Khess83', 'khesiwe', 'Dube', 'khess83@example.com');
+ ('@Barry', 'Mamadou Dian', 'Barry', 'diams29@gmail.com', 'NW5'),
+ ('@Sahar', 'Sahar', 'Karim', 'saharkarim@example.com', 'NW5'),
+ ('@Davood', 'Davood', 'Moradi', 'janedoe@example.com', 'NW5'),
+ ('@Zaw', 'Zaw', 'Khing', 'zaw@example.com', 'NW5'),
+ ('Mik22', 'Miguel', 'gomes', 'gomes@example.com', 'NW5'),
+ ('Khess83', 'khesiwe', 'Dube', 'khess83@example.com', 'NW5'),
+ ('@Raj', 'Rajamodi', 'Sadik', 'Rajamodi@example.com', 'WM4'),
+ ('@Rama', 'Rama', 'Diallo', 'Ramssess@example.com', 'WM4');
 
  INSERT INTO availabilities (availabilityID,username, date, from_time, to_time)
  VALUES 
