@@ -38,7 +38,7 @@ body {
 /* ------------hover navbar and button----------- */
 .navbar-nav .nav-link:hover, .btn:hover {
   color:#FFFFFF;
-  background-color: #EE4344; 
+  background-color: #ff0000; 
 }
 
 .nav-link {

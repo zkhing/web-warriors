@@ -55,11 +55,9 @@ function ViewAllAvailabilities(props) {
 	return (
 		<>
 			<Heading />
-			<Container
-				className="p-5 my-5"
-				style={{ backgroundColor: "#e8e8e4" }}
-			>
-				<h1>All students availabilities</h1>
+			{/* <Container className="p-5 my-5" style={{ backgroundColor: "#e8e8e4" }}> */}
+			<div style={{ backgroundColor: "#e8e8e4" }}>
+				<h1 className="text-center p-4">All Trainees Availabilities</h1>
 				<Table striped bordered hover>
 					<thead>
 						<tr>
@@ -131,8 +129,15 @@ function ViewAllAvailabilities(props) {
 						))}
 					</tbody>
 				</Table>
-				<Button onClick={() => window.history.back()}>Go Back</Button>
-			</Container>
+				<Button
+					variant="outline-danger"
+					className="d-grid gap-2 col-3 mx-auto m-3"
+					onClick={() => window.history.back()}
+				>
+					Back To Input
+				</Button>
+				{/* </Container> */}
+			</div>
 
 			<Footer />
 		</>
