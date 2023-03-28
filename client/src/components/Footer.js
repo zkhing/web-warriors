@@ -10,7 +10,7 @@ function Footer() {
 				<h4 className="text-center">Follow Us</h4>
 				
 				<div className="d-flex justify-content-evenly fa-2x">
-					<a href="https://twitter.com/CodeYourFuture">
+				<a href="https://www.facebook.com/codeyourfuture.io/">
 						<FontAwesomeIcon icon={faFacebook} />
 					</a>
 					<a href="https://www.instagram.com/codeyourfuture_/">
