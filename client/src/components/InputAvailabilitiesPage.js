@@ -8,8 +8,6 @@ import Heading from "./Heading";
 import Footer from "./Footer";
 
 
-
-
 const InputAvailabilitiesPage = () => {
   const [date, setDate] = useState("");
   const [fromTime, setFromTime] = useState("");
@@ -61,14 +59,7 @@ const InputAvailabilitiesPage = () => {
     localStorage.setItem(username, JSON.stringify(updatedAvailabilities));
   }
 
-  //Function to round a given time to the nearest 30 minutes
-  // const roundToNearestThirtyMinutes = (time) => {
-  //   const [hours, minutes] = time.split(":");
-  //   const roundedMinutes = Math.round(minutes / 30) * 30;
-  //   const roundedHours = roundedMinutes === 60 ? parseInt(hours) + 1 : parseInt(hours);
-  //   return `${roundedHours < 10 ? "0" : ""}${roundedHours}:${roundedMinutes === 0 ? "00" : "30"}`;
-  // };
-
+  
   // Event handler to update fromTime state with a rounded value
   const handleFromTimeChange = (event) => {
     const hours = event.target.value.split(":")[0];
@@ -96,7 +87,7 @@ const InputAvailabilitiesPage = () => {
 		<Row>
 		  <Col lg={3}>
 			<Nav className="flex-column">
-			  <h2 className="text-center my-4">Welcome, {username}!</h2>
+			  <h2 className="text-center mt-5">Welcome, {username}!</h2>
 			  <Link to={`/CurrentUserMatching?username=${location.search.split("=")[1]}`}>
 				<Button className="bg-danger d-grid gap-2 col-12 mx-auto m-3" type="submit">
 				  View Matching Availabilities
@@ -110,7 +101,7 @@ const InputAvailabilitiesPage = () => {
 			</Nav>
 		  </Col>
 		  <Col lg={9}>
-			<Container className="bg-secondary p-5 my-5 container-2">
+			<Container className="bg-light p-5 my-5 container-2">
 
 			  <Form onSubmit={handleSubmit}>
 				<Card.Title className="text-center my-3">
@@ -160,7 +151,7 @@ const InputAvailabilitiesPage = () => {
 </Button>
 			  </Form>
   
-			  <Table striped bordered hover responsive className="table-dark">
+			  <Table striped bordered hover>
   <thead>
     <tr>
       <th>Date</th>

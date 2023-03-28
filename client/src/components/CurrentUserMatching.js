@@ -45,7 +45,7 @@ const CurrentUserMatching = () => {
   return (
 		<>
 			<Heading />
-			<Container className="bg-secondary p-5 my-5 container-2">
+			<Container className="bg-light p-5 my-5">
 				<h1>Your Matches</h1>
 				<Table striped bordered hover>
 					<thead>
