@@ -35,25 +35,26 @@ function LoginPage() {
 
 	return (
 		<>
-			{/* <div className="d-flex justify-content-between mt-3"> */}
-				<Card className="p-3">
-					<Form onSubmit={handleSubmit}>
-						<Form.Group controlId="formEmail">
-							<Form.Label>Username</Form.Label>
-							<Form.Control
-								type="text"
-								placeholder="username"
-								value={username}
-								onChange={handleInputChange}
-							/>
-						</Form.Group>
+			<Card className="p-3">
+				<Form onSubmit={handleSubmit}>
+					<Form.Group controlId="formEmail">
+						<Form.Label>Username</Form.Label>
+						<Form.Control
+							type="text"
+							placeholder="username"
+							value={username}
+							onChange={handleInputChange}
+						/>
+					</Form.Group>
 
-						<Button className="d-grid gap-2 col-6 mx-auto mt-3" type="submit">
-							Log in
-						</Button>
-					</Form>
-				</Card>
-			{/* </div> */}
+					<Button
+						className="d-grid gap-2 col-6 mx-auto mt-3"
+						type="submit"
+					>
+						Log in
+					</Button>
+				</Form>
+			</Card>
 		</>
 	);
 }

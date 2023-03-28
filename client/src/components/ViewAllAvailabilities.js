@@ -39,14 +39,14 @@ function ViewAllAvailabilities(props) {
 		);
 	}
 
-	function handleShowMatchingUsersClick(availability) {
-		setSelectedAvailability(availability);
-		fetchMatchingUsers(
-			availability.date,
-			availability.from_time,
-			availability.to_time
-		);
-	}
+	// function handleShowMatchingUsersClick(availability) {
+	// 	setSelectedAvailability(availability);
+	// 	fetchMatchingUsers(
+	// 		availability.date,
+	// 		availability.from_time,
+	// 		availability.to_time
+	// 	);
+	// }
 
 	if (loading) {
 		return <div>Loading...</div>;
@@ -55,7 +55,11 @@ function ViewAllAvailabilities(props) {
 	return (
 		<>
 			<Heading />
-			<Container className="bg-light p-5 my-5">
+			<Container
+				className="p-5 my-5"
+				style={{ backgroundColor: "#e8e8e4" }}
+			>
+				<h1>All students availabilities</h1>
 				<Table striped bordered hover>
 					<thead>
 						<tr>
@@ -103,13 +107,13 @@ function ViewAllAvailabilities(props) {
 									})}
 								</td>
 								<td className="text-center">
-									<button
+									{/* <button
 										type="button"
 										className="btn btn-primary"
 										onClick={() => handleShowMatchingUsersClick(availability)}
 									>
 										Show matching Trainees
-									</button>
+									</button> */}
 									{selectedAvailability === availability &&
 									matchingUserNames.length > 0 ? (
 										<ul className="list-unstyled matching-users">

@@ -81,120 +81,143 @@ const InputAvailabilitiesPage = () => {
   
 
   return (
-	<>
-	  <Heading />
-	  <Container>
-		<Row>
-		  <Col lg={3}>
-			<Nav className="flex-column">
-			  <h2 className="text-center mt-5">Welcome, {username}!</h2>
-			  <Link to={`/CurrentUserMatching?username=${location.search.split("=")[1]}`}>
-				<Button className="bg-danger d-grid gap-2 col-12 mx-auto m-3" type="submit">
-				  View Matching Availabilities
-				</Button>
-			  </Link>
-			  <Link to="/ViewAllAvailabilities">
-				<Button className="bg-danger d-grid gap-2 col-12 mx-auto m-3" type="submit">
-				  View All Availabilities
-				</Button>
-			  </Link>
-			</Nav>
-		  </Col>
-		  <Col lg={9}>
-			<Container className="bg-light p-5 my-5 container-2">
+		<>
+			<Heading />
 
-			  <Form onSubmit={handleSubmit}>
-				<Card.Title className="text-center my-3">
-				  Your Availabilities
-				</Card.Title>
-  
-				<Row>
-				  <Col>
-					<Form.Group controlId="formDate">
-					  <Form.Label>Date</Form.Label>
-					  <Form.Control
-						type="date"
-						value={date}
-						onChange={(e) => setDate(e.target.value)}
-						min={new Date().toISOString().split("T")[0]}
-						required
-					  />
-					</Form.Group>
-				  </Col>
-				  <Col>
-					<Form.Group controlId="formFromTime">
-					  <Form.Label>From</Form.Label>
-					  <Form.Control
-						type="time"
-						value={fromTime}
-						onChange={handleFromTimeChange}
-						required
-						step={1800}
-					  />
-					</Form.Group>
-				  </Col>
-				  <Col>
-					<Form.Group controlId="formToTime">
-					  <Form.Label>To</Form.Label>
-					  <Form.Control
-						type="time"
-						value={toTime}
-						onChange={handleToTimeChange}
-						required
-						step={1800}
-					  />
-					</Form.Group>
-				  </Col>
-				</Row>
-				<Button className="bg-danger d-grid gap-2 col-3 mx-auto m-3" type="submit">
-  Submit
-</Button>
-			  </Form>
-  
-			  <Table striped bordered hover>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    {availabilities.map((availability, index) => (
-      <tr key={index}>
-        <td>{availability.date}</td>
-        <td>{availability.fromTime}</td>
-        <td>{availability.toTime}</td>
-        <td>
-          <DeleteAvailability
-            availability={availability}
-            onDelete={(availabilityToDelete) => {
-              setAvailabilities(
-                availabilities.filter(
-                  (availability) =>
-                    availability.id !== availabilityToDelete.id
-                )
-              );
-              const searchParams = new URLSearchParams(location.search);
-              const username = searchParams.get("username");
-              const updatedAvailabilities = availabilities.filter((availability) => availability.id !== availabilityToDelete.id);
-              localStorage.setItem(username, JSON.stringify(updatedAvailabilities));
-            }}
-          />
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</Table>
+			<Row>
+				<Col lg={3}>
+					
+					<div className="flex-column">
+						<h2 className="text-center mt-5">Welcome, {username}!</h2>
+						<Link
+							to={`/CurrentUserMatching?username=${
+								location.search.split("=")[1]
+							}`}
+							style={{ textDecoration: "none" }}
+						>
+							<Button
+								className="bg-info d-grid gap-2 col-12 mx-auto m-3"
+								type="submit"
+							>
+								View Matching Availabilities
+							</Button>
+						</Link>
+						<Link
+							to="/ViewAllAvailabilities"
+							style={{ textDecoration: "none" }}
+						>
+							<Button className="bg-info d-grid gap-2 col-12 mx-auto m-3" type="submit">
+								View All Availabilities
+							</Button>
+						</Link>
+					</div>
+				
+				</Col>
 
-			</Container>
-		  </Col>
-		</Row>
-	  </Container>
-	  <Footer />
-	</>
-  );
+				<Col lg={9}>
+					<Container
+						className="p-5 my-5"
+						style={{ backgroundColor: "#e8e8e4" }}
+					>
+						<Form onSubmit={handleSubmit}>
+							<Card.Title className="text-center my-3">
+								Your Availabilities
+							</Card.Title>
+
+							<Row>
+								<Col>
+									<Form.Group controlId="formDate">
+										<Form.Label>Date</Form.Label>
+										<Form.Control
+											type="date"
+											value={date}
+											onChange={(e) => setDate(e.target.value)}
+											min={new Date().toISOString().split("T")[0]}
+											required
+										/>
+									</Form.Group>
+								</Col>
+								<Col>
+									<Form.Group controlId="formFromTime">
+										<Form.Label>From</Form.Label>
+										<Form.Control
+											type="time"
+											value={fromTime}
+											onChange={handleFromTimeChange}
+											required
+											step={1800}
+										/>
+									</Form.Group>
+								</Col>
+								<Col>
+									<Form.Group controlId="formToTime">
+										<Form.Label>To</Form.Label>
+										<Form.Control
+											type="time"
+											value={toTime}
+											onChange={handleToTimeChange}
+											required
+											step={1800}
+										/>
+									</Form.Group>
+								</Col>
+							</Row>
+							<Button className="d-grid gap-2 col-3 mx-auto m-3" type="submit">
+								Submit
+							</Button>
+						</Form>
+
+						<Table striped bordered hover>
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>From</th>
+									<th>To</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								{availabilities.map((availability, index) => (
+									<tr key={index}>
+										<td>{availability.date}</td>
+										<td>{availability.fromTime}</td>
+										<td>{availability.toTime}</td>
+										<td>
+											<DeleteAvailability
+												availability={availability}
+												onDelete={(availabilityToDelete) => {
+													setAvailabilities(
+														availabilities.filter(
+															(availability) =>
+																availability.id !== availabilityToDelete.id
+														)
+													);
+													const searchParams = new URLSearchParams(
+														location.search
+													);
+													const username = searchParams.get("username");
+													const updatedAvailabilities = availabilities.filter(
+														(availability) =>
+															availability.id !== availabilityToDelete.id
+													);
+													localStorage.setItem(
+														username,
+														JSON.stringify(updatedAvailabilities)
+													);
+												}}
+											/>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</Table>
+					</Container>
+				</Col>
+			</Row>
+
+			<Footer />
+		</>
+	);
   
 };
 
