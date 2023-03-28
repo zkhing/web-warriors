@@ -85,9 +85,8 @@ const InputAvailabilitiesPage = () => {
 			<Heading />
 
 			<Row>
-				<Col lg={3}>
-					
-					<div className="flex-column">
+				<Col lg={3} className="d-flex flex-column justify-content-center align-items-center">
+					<div className="ml-5">
 						<h2 className="text-center mt-5">Welcome, {username}!</h2>
 						<Link
 							to={`/CurrentUserMatching?username=${
@@ -95,10 +94,7 @@ const InputAvailabilitiesPage = () => {
 							}`}
 							style={{ textDecoration: "none" }}
 						>
-							<Button
-								className="d-grid gap-2 col-12 mx-auto m-3"
-								type="submit"
-							>
+							<Button className="d-grid gap-2 col-12 mx-auto m-3" type="submit">
 								View Matching Availabilities
 							</Button>
 						</Link>
@@ -111,7 +107,6 @@ const InputAvailabilitiesPage = () => {
 							</Button>
 						</Link>
 					</div>
-				
 				</Col>
 
 				<Col lg={9}>
