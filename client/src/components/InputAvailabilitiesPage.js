@@ -13,16 +13,19 @@ const InputAvailabilitiesPage = () => {
   const [fromTime, setFromTime] = useState("");
   const [toTime, setToTime] = useState("");
   const [availabilities, setAvailabilities] = useState([]);
+  const [username, setUsername] = useState("");
   const location = useLocation();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const username = searchParams.get("username");
+    setUsername(username); // Update the username state variable
     const savedAvailabilities = JSON.parse(localStorage.getItem(username));
     if (savedAvailabilities) {
       setAvailabilities(savedAvailabilities);
     }
-  }, [location]);   
+  }, [location]);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -85,9 +88,11 @@ const InputAvailabilitiesPage = () => {
   
 
 	return (
-		<>
-			<Heading />
-			<Container className="bg-secondary p-5 my-5 container-2">
+			<>
+      <Heading />
+      {/* Add the welcome message using the username state variable */}
+      <h2 className="text-center my-4">Welcome, {username}!</h2>
+      <Container className="bg-secondary p-5 my-5 container-2">
 				<Form onSubmit={handleSubmit}>
 					<Card.Title className="text-center my-3">
 						Your Availabilities
@@ -152,19 +157,25 @@ const InputAvailabilitiesPage = () => {
 								<td>{availability.date}</td>
 								<td>{availability.fromTime}</td>
 								<td>{availability.toTime}</td>
-								<td>
-									<DeleteAvailability
-										availability={availability}
-										onDelete={(availabilityToDelete) =>
-											setAvailabilities(
-												availabilities.filter(
-													(availability) =>
-														availability !== availabilityToDelete
-												)
-											)
-										}
-									/>
-								</td>
+								...
+<td>
+  <DeleteAvailability
+    availability={availability}
+    onDelete={(availabilityToDelete) => {
+      setAvailabilities(
+        availabilities.filter(
+          (availability) =>
+            availability.id !== availabilityToDelete.id
+        )
+      );
+      const searchParams = new URLSearchParams(location.search);
+      const username = searchParams.get("username");
+      const updatedAvailabilities = availabilities.filter((availability) => availability.id !== availabilityToDelete.id);
+      localStorage.setItem(username, JSON.stringify(updatedAvailabilities));
+    }}
+  />
+</td>
+...
 							</tr>
 						))}
 					</tbody>
