@@ -111,6 +111,7 @@ const InputAvailabilitiesPage = () => {
 		  </Col>
 		  <Col lg={9}>
 			<Container className="bg-secondary p-5 my-5 container-2">
+
 			  <Form onSubmit={handleSubmit}>
 				<Card.Title className="text-center my-3">
 				  Your Availabilities
@@ -195,6 +196,7 @@ const InputAvailabilitiesPage = () => {
     ))}
   </tbody>
 </Table>
+
 			</Container>
 		  </Col>
 		</Row>
