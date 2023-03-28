@@ -40,6 +40,15 @@
   margin-bottom: 20px;
 }
 
+
+/* ------------hover navbar and button----------- */
+.navbar-nav .nav-link:hover, .btn:hover {
+  color:#FFFFFF;
+  background-color: #EE4344; 
+}
+
+ 
+
 @media (max-width: 767px) {
   .login_page {
     padding-top: 50px;

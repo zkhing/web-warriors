@@ -96,7 +96,7 @@ const InputAvailabilitiesPage = () => {
 							style={{ textDecoration: "none" }}
 						>
 							<Button
-								className="bg-info d-grid gap-2 col-12 mx-auto m-3"
+								className="d-grid gap-2 col-12 mx-auto m-3"
 								type="submit"
 							>
 								View Matching Availabilities
@@ -106,7 +106,7 @@ const InputAvailabilitiesPage = () => {
 							to="/ViewAllAvailabilities"
 							style={{ textDecoration: "none" }}
 						>
-							<Button className="bg-info d-grid gap-2 col-12 mx-auto m-3" type="submit">
+							<Button className="d-grid gap-2 col-12 mx-auto m-3" type="submit">
 								View All Availabilities
 							</Button>
 						</Link>

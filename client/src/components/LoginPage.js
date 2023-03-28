@@ -48,6 +48,7 @@ function LoginPage() {
 					</Form.Group>
 
 					<Button
+						variant="outline-danger"
 						className="d-grid gap-2 col-6 mx-auto mt-3"
 						type="submit"
 					>

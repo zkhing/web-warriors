@@ -17,7 +17,7 @@ function Heading() {
 					/>
 				</Navbar.Brand>
 				<Container className="d-flex justify-content-end">
-					<Nav href="#home" className="hover-overlay">
+					<Nav href="#home">
 						<Nav.Link href="home">Home</Nav.Link>
 						<Nav.Link href="AboutUs">About us</Nav.Link>
 						<Nav.Link href="contact">Contact</Nav.Link>
