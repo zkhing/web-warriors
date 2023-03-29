@@ -143,7 +143,6 @@ const InputAvailabilitiesPage = () => {
 								<th>Date</th>
 								<th>From</th>
 								<th>To</th>
-								<th>Delete</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -229,7 +228,6 @@ const InputAvailabilitiesPage = () => {
 			<Footer />
 		</>
 	);
-  
 };
 
 export default InputAvailabilitiesPage;
