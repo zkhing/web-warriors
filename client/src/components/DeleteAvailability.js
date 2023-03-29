@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 const DeleteAvailability = ({ availability, onDelete }) => {
   const handleDelete = () => {
     onDelete(availability);
-    fetch(`/api/deleteAvailability`, {
+    fetch("/api/deleteAvailability", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Card, Table, Nav } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeleteAvailability from "./DeleteAvailability";
 import Heading from "./Heading";
@@ -79,7 +79,6 @@ const InputAvailabilitiesPage = () => {
 	}
   };
   
-
   return (
 		<>
 			<Heading />
@@ -148,9 +147,6 @@ const InputAvailabilitiesPage = () => {
 						<tbody>
 							{availabilities.map((availability, index) => (
 								<tr key={index}>
-									{/* <td>{availability.date}</td>
-										<td>{availability.fromTime}</td>
-										<td>{availability.toTime}</td> */}
 									<td className="text-center">
 										{new Date(availability.date).toLocaleDateString("en-GB", {
 											weekday: "short",

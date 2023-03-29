@@ -1,9 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import Heading from "./Heading";
 import Footer from "./Footer";
-
 
 const teamMembers = [
 	{

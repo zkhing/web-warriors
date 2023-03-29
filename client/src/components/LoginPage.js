@@ -27,7 +27,6 @@ function LoginPage() {
 		  alert("An error occurred. Please try again later.");
 		}
 	  };
-	
 
 	const handleInputChange = (event) => {
 		setUsername(event.target.value);
