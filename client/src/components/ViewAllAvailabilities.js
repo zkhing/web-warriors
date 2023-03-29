@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {  Button } from "react-bootstrap";
 import Heading from "./Heading";
 import Footer from "./Footer";
 
@@ -57,9 +58,6 @@ function ViewAllAvailabilities(props) {
 			<table className="table table-striped table-hover mt-5">
 				<thead>
 					<tr>
-						{/* <th style={{ fontSize: "1.5rem" }} className="text-center">
-						Username
-					</th> */}
 						<th style={{ fontSize: "1.5rem" }} className="text-center">
 							Date
 						</th>
@@ -110,8 +108,9 @@ function ViewAllAvailabilities(props) {
 							</td>
 						</tr>
 					))}
-				</tbody>
-			</table>
+					</tbody>
+				</table>
+			<Button onClick={() => window.history.back()}>Go Back</Button>
 			<Footer />
 		</div>
 	);

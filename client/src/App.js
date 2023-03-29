@@ -6,7 +6,6 @@ import "./components/LoginPage.css";
 import "./components/Hero.js";
 import Hero from "./components/Hero.js";
 import AboutUs from "./components/AboutUs";
-import Contact from "./Contact";
 import ViewAllAvailabilities from "./components/ViewAllAvailabilities";
 import CurrentUserMatching from "./components/CurrentUserMatching";
 
