@@ -7,10 +7,10 @@ import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg
 function Footer() {
 	return (
 			<Container className="bg-light pt-4">
-				<h4 className="text-center">Follow Us</h4>
+				<h4 className="text-center"> Follow Us </h4>
 				
 				<div className="d-flex justify-content-evenly fa-2x">
-				<a href="https://www.facebook.com/codeyourfuture.io/">
+				<a href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB">
 						<FontAwesomeIcon icon={faFacebook} />
 					</a>
 					<a href="https://www.instagram.com/codeyourfuture_/">
@@ -19,9 +19,14 @@ function Footer() {
 					<a href="https://twitter.com/CodeYourFuture">
 						<FontAwesomeIcon icon={faTwitter} />
 					</a>
+				
 				</div>
+			<div className="d-flex justify-content-evenly fa-2x"> 
+				<h6>Contact us on  info@cyf.co.uk</h6>
+			</div>
+			      
 
-				<p className="text-center">&copy; 2023 web-warriors.</p>
+			<p className="text-center">&copy; Copyright 2023 web-warriors.    </p>
 			</Container>
 	);
 }
