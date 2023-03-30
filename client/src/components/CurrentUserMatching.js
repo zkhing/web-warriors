@@ -45,8 +45,8 @@ const CurrentUserMatching = () => {
   return (
 		<>
 			<Heading />
-			<Container className="bg-secondary p-5 my-5 container-2">
-				<h1>Your Matches</h1>
+			<Container className="p-5 my-5" style={{ backgroundColor: "#e8e8e4" }}>
+				<h1 className="text-center">Your Matches</h1>
 				<Table striped bordered hover>
 					<thead>
 						<tr>
@@ -59,25 +59,48 @@ const CurrentUserMatching = () => {
 					<tbody>
 						{availabilities.map((availability, index) => (
 							<tr key={index}>
-                <td >{new Date(availability.date)
-                  .toLocaleDateString("en-GB", { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
-                </td>
-                <td>
-                  {new Date(`1970-01-01T${availability.from_time}Z`)
-                  .toLocaleTimeString("en-US", { hour12: true, hour: "numeric", minute: "numeric" })}
-                </td>
-                <td>
-                  {new Date(`1970-01-01T${availability.to_time}Z`)
-                    .toLocaleTimeString("en-US", { hour12: true, hour: "numeric", minute: "numeric" })}
-                </td>
-                <td>{availability.matchingUsers.join(", ")}</td>
-              </tr>
+								<td>
+									{new Date(availability.date).toLocaleDateString("en-GB", {
+										weekday: "short",
+										year: "numeric",
+										month: "short",
+										day: "numeric",
+									})}
+								</td>
+								<td>
+									{new Date(
+										`1970-01-01T${availability.from_time}Z`
+									).toLocaleTimeString("en-US", {
+										hour24: true,
+										hour: "numeric",
+										minute: "numeric",
+										timeZone: "UTC",
+									})}
+								</td>
+								<td>
+									{new Date(
+										`1970-01-01T${availability.to_time}Z`
+									).toLocaleTimeString("en-US", {
+										hour24: true,
+										hour: "numeric",
+										minute: "numeric",
+										timeZone: "UTC",
+									})}
+								</td>
+								<td>{availability.matchingUsers.join(", ")}</td>
+							</tr>
 						))}
 					</tbody>
 				</Table>
-				<Button onClick={() => window.history.back()}>Go Back</Button>
+				<Button
+					variant="outline-danger"
+					className="d-grid gap-2 col-3 mx-auto m-3"
+					onClick={() => window.history.back()}
+				>
+					Back To Input
+				</Button>
 			</Container>
-      <Footer />
+			<Footer />
 		</>
 	);
 };
