@@ -38,7 +38,6 @@ const ViewAllAvailabilities = () => {
 			.catch((error) => console.log(error));
 	}, []);
 
-	
 	const filteredAvailabilities = availabilities.filter((availability) =>
 		availability.usernames.some((username) =>
 			username.toLowerCase().includes(searchTerm.toLowerCase())
@@ -123,6 +122,7 @@ const ViewAllAvailabilities = () => {
 					Back To Input
 				</Button>
 			</div>
+
 			<Footer />
 		</>
 	);
