@@ -58,7 +58,7 @@ function About() {
 	}, [showMembers]);
 
 	return (
-		<div style={{ backgroundColor: "#eddcd2", minHeight: "100vh" }}>
+		<div style={{ backgroundColor: "#e8e8e4", minHeight: "100vh" }}>
 			<Heading />
 			<div style={{ padding: "20px", color: "black" }}>
 				<h1 style={{ textAlign: "center", marginTop: "80px" }}>WHO WE ARE?</h1>
@@ -96,7 +96,7 @@ function About() {
 				<>
 					<Card
 						className="p-5"
-						style={{ backgroundColor: "#f5ebe0", minHeight: "100vh" }}
+						style={{ backgroundColor: "#e8e8e4", minHeight: "100vh" }}
 					>
 						<h2 style={{ textAlign: "center", marginTop: "20px" }}>
 							OUR PROJECT

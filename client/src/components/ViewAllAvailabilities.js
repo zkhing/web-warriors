@@ -48,7 +48,7 @@ const ViewAllAvailabilities = () => {
 	return (
 		<>
 			<Heading />
-			<div style={{ backgroundColor: "#e8e8e4" }}>
+			<div className="p-5 my-5" style={{ backgroundColor: "#e8e8e4" }}>
 				<h1 className="text-center p-4">All Trainees Availabilities</h1>
 				<Form className="d-grid gap-2 col-6 mx-auto m-3">
 					<Form.Group controlId="formSearch">
@@ -92,18 +92,20 @@ const ViewAllAvailabilities = () => {
 									{new Date(
 										`1970-01-01T${availability.from_time}Z`
 									).toLocaleTimeString("en-US", {
-										hour12: true,
+										hour24: true,
 										hour: "numeric",
 										minute: "numeric",
+										timeZone: "UTC",
 									})}
 								</td>
 								<td className="text-center">
 									{new Date(
 										`1970-01-01T${availability.to_time}Z`
 									).toLocaleTimeString("en-US", {
-										hour12: true,
+										hour24: true,
 										hour: "numeric",
 										minute: "numeric",
+										timeZone: "UTC",
 									})}
 								</td>
 								<td className="text-center">
@@ -115,7 +117,7 @@ const ViewAllAvailabilities = () => {
 				</Table>
 				<Button
 					variant="outline-danger"
-					className="d-grid gap-2 col-3 mx-auto"
+					className="d-grid gap-2 col-3 mx-auto m-3"
 					onClick={() => window.history.back()}
 				>
 					Back To Input

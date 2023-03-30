@@ -18,36 +18,23 @@ const InputAvailabilitiesPage = () => {
 
 	const [uploadedImage, setUploadedImage] = useState(null);
 
-	// useEffect(() => {
-	// const searchParams = new URLSearchParams(location.search);
-	// const username = searchParams.get("username");
-	// setUsername(username); // Update the username state variable
-	// const savedAvailabilities = JSON.parse(localStorage.getItem(username));
-	// if (savedAvailabilities) {
-	// setAvailabilities(savedAvailabilities);
-	// }
-	// }, [location]);
 
 	useEffect(() => {
 		const searchParams = new URLSearchParams(location.search);
-		const username = searchParams.get("username");
-		// Load availabilities from local storage
-		const storedAvailabilities = localStorage.getItem(username);
+		const usernameFromParams = searchParams.get("username");
+		setUsername(usernameFromParams);
+		const storedAvailabilities = localStorage.getItem(usernameFromParams);
 		if (storedAvailabilities) {
 			setAvailabilities(JSON.parse(storedAvailabilities));
 		}
-	}, [location]); // Depend on location
-
-	useEffect(() => {
-		const searchParams = new URLSearchParams(location.search);
-		const username = searchParams.get("username");
-		setUsername(username); // Update the username state variable
-		// Set the uploaded image using the image URL stored in the local storage for the current user
-		const savedImage = localStorage.getItem(`${username}_uploadedImage`);
+		const savedImage = localStorage.getItem(
+			`${usernameFromParams}_uploadedImage`
+		);
 		if (savedImage) {
 			setUploadedImage(savedImage);
 		}
-	}, [location, username]); // Depend on both location and username
+	}, [location]);
+
 	const handleDrop = (event) => {
 		event.preventDefault();
 		const file = event.dataTransfer.files[0];
@@ -156,8 +143,17 @@ const InputAvailabilitiesPage = () => {
 									accept="image/*"
 									onChange={(e) => {
 										const imageFile = e.target.files[0];
-										const imageURL = URL.createObjectURL(imageFile);
-										setUploadedImage(imageURL);
+										const reader = new FileReader();
+										reader.onload = () => {
+											const imageUrl = reader.result;
+											setUploadedImage(imageUrl);
+											const usernameFromParams = getUsername();
+											localStorage.setItem(
+												`${usernameFromParams}_uploadedImage`,
+												imageUrl
+											);
+										};
+										reader.readAsDataURL(imageFile);
 									}}
 									style={{ display: "none" }}
 								/>
@@ -179,16 +175,14 @@ const InputAvailabilitiesPage = () => {
 						</Col>
 					</div>
 				</Col>
-
 				<Col>
 					<div className="d-flex justify-content-center align-items-center mt-5">
 						<Container
 							className="p-5 m-3"
-							style={{ backgroundColor: "#e8e8e4" }}
+							style={{ backgroundColor: "#E8E8E4" }}
 						>
 							<Form onSubmit={handleSubmit}>
 								<h1 className="text-center mb-5">Your Availabilities</h1>
-
 								<Row>
 									<Col>
 										<Form.Group controlId="formDate">
@@ -235,7 +229,6 @@ const InputAvailabilitiesPage = () => {
 									Submit
 								</Button>
 							</Form>
-
 							<Table striped bordered hover>
 								<thead className="text-center">
 									<tr>
@@ -262,20 +255,23 @@ const InputAvailabilitiesPage = () => {
 												{new Date(
 													`1970-01-01T${availability.fromTime}Z`
 												).toLocaleTimeString("en-US", {
-													hour12: true,
+													hour24: true,
 													hour: "numeric",
 													minute: "numeric",
+													timeZone: "UTC",
 												})}
 											</td>
 											<td className="text-center">
 												{new Date(
 													`1970-01-01T${availability.toTime}Z`
 												).toLocaleTimeString("en-US", {
-													hour12: true,
+													hour24: true,
 													hour: "numeric",
 													minute: "numeric",
+													timeZone: "UTC",
 												})}
 											</td>
+
 											<td>
 												<DeleteAvailability
 													availability={availability}
@@ -307,7 +303,6 @@ const InputAvailabilitiesPage = () => {
 							</Table>
 						</Container>
 					</div>
-
 					<div className="d-flex justify-content-center align-items-center">
 						<Link
 							to={`/CurrentUserMatching?username=${
@@ -336,10 +331,44 @@ const InputAvailabilitiesPage = () => {
 					</div>
 				</Col>
 			</Row>
-
 			<Footer />
 		</>
 	);
 };
-
 export default InputAvailabilitiesPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -71,18 +71,20 @@ const CurrentUserMatching = () => {
 									{new Date(
 										`1970-01-01T${availability.from_time}Z`
 									).toLocaleTimeString("en-US", {
-										hour12: true,
+										hour24: true,
 										hour: "numeric",
 										minute: "numeric",
+										timeZone: "UTC",
 									})}
 								</td>
 								<td>
 									{new Date(
 										`1970-01-01T${availability.to_time}Z`
 									).toLocaleTimeString("en-US", {
-										hour12: true,
+										hour24: true,
 										hour: "numeric",
 										minute: "numeric",
+										timeZone: "UTC",
 									})}
 								</td>
 								<td>{availability.matchingUsers.join(", ")}</td>
