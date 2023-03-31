@@ -1,7 +1,9 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
 body {
   margin: 1em;
-  font-family: Raleway;
+  font-family: 'Raleway', sans-serif;
   background-color:#edf2f4 ;
 }
 
@@ -14,7 +16,7 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 850px;
 }
 
 .logo {
@@ -27,6 +29,7 @@ body {
 
 .btn {
   border-radius: 0;
+  text-align: center;
 }
 
 .logo-container {

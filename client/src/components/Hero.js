@@ -34,7 +34,7 @@ function Hero() {
 						</p>
 						<p>
 							If you don't have username yet, please contact admin@cyf.com to
-							set one up
+							set one up.
 						</p>
 						<p>
 							If you have username, you can get started by inserting it below:

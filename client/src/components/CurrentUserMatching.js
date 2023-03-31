@@ -47,16 +47,25 @@ const CurrentUserMatching = () => {
 			<Heading />
 			<Container className="p-5 my-5" style={{ backgroundColor: "#e8e8e4" }}>
 				<h1 className="text-center">Your Matches</h1>
-				<Table striped bordered hover>
-					<thead>
+				
+				<Table striped bordered hover className="mt-5">
+					<thead className="text-center">
 						<tr>
-							<th>Date</th>
-							<th>From</th>
-							<th>To</th>
-							<th>Available Trainees</th>
+							<th style={{ fontSize: "1.5rem" }} className="text-center">
+								Date
+							</th>
+							<th style={{ fontSize: "1.5rem" }} className="text-center">
+								From
+							</th>
+							<th style={{ fontSize: "1.5rem" }} className="text-center">
+								To
+							</th>
+							<th style={{ fontSize: "1.5rem" }} className="text-center">
+								Available Trainees
+							</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody className="text-center">
 						{availabilities.map((availability, index) => (
 							<tr key={index}>
 								<td>

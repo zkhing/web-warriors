@@ -61,10 +61,9 @@ function About() {
 		<div style={{ backgroundColor: "#e8e8e4", minHeight: "100vh" }}>
 			<Heading />
 			<div style={{ padding: "20px", color: "black" }}>
-				<h1 style={{ textAlign: "center", marginTop: "80px" }}>WHO WE ARE?</h1>
-				<p style={{ textAlign: "center", fontSize: "28px" }}>
+				<h1 style={{ textAlign: "center", marginTop: "28px" }}>
 					We are team WEB-WARRIORS.
-				</p>
+				</h1>
 			</div>
 			{showMembers && (
 				<div style={{ display: "flex", justifyContent: "center" }}>
