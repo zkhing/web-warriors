@@ -115,11 +115,11 @@ const InputAvailabilitiesPage = () => {
 		<>
 			<Heading />
 			<Row>
-				<Col xs={3} className="d-flex justify-content-center m-5 pl-5">
-					<div>
+				<Col xs={3} className="d-flex justify-content-center p-5">
+					<div className="text-center">
 						<h2>Welcome, {username}!</h2>
 						<Col
-							lg={3}
+							lg={2}
 							style={{
 								display: "flex",
 								flexDirection: "column",
@@ -166,17 +166,15 @@ const InputAvailabilitiesPage = () => {
 								)}
 							</div>
 							{uploadedImage && (
-								<div>
-									<Button className="text-center" onClick={handleRemoveImage}>
-										Remove Image
-									</Button>
+								<div className="text-center">
+									<Button onClick={handleRemoveImage}>Remove Image</Button>
 								</div>
 							)}
 						</Col>
 					</div>
 				</Col>
 				<Col>
-					<div className="d-flex justify-content-center align-items-center mt-5">
+					<div className="mt-5">
 						<Container
 							className="p-5 m-3"
 							style={{ backgroundColor: "#E8E8E4" }}
@@ -229,12 +227,18 @@ const InputAvailabilitiesPage = () => {
 									Submit
 								</Button>
 							</Form>
-							<Table striped bordered hover>
+							<Table striped bordered hover className="mt-5">
 								<thead className="text-center">
 									<tr>
-										<th>Date</th>
-										<th>From</th>
-										<th>To</th>
+										<th style={{ fontSize: "1.5rem" }} className="text-center">
+											Date
+										</th>
+										<th style={{ fontSize: "1.5rem" }} className="text-center">
+											From
+										</th>
+										<th style={{ fontSize: "1.5rem" }} className="text-center">
+											To
+										</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -303,17 +307,15 @@ const InputAvailabilitiesPage = () => {
 							</Table>
 						</Container>
 					</div>
-					<div className="d-flex justify-content-center align-items-center">
+
+					<div className="d-flex justify-content-evenly m-5">
 						<Link
 							to={`/CurrentUserMatching?username=${
 								location.search.split("=")[1]
 							}`}
 							style={{ textDecoration: "none" }}
 						>
-							<Button
-								className="d-grid gap-2 col-10 mx-auto mb-3"
-								type="submit"
-							>
+							<Button className="py-3" type="submit">
 								View Matching Availabilities
 							</Button>
 						</Link>
@@ -321,10 +323,7 @@ const InputAvailabilitiesPage = () => {
 							to="/ViewAllAvailabilities"
 							style={{ textDecoration: "none" }}
 						>
-							<Button
-								className="d-grid gap-2 col-10 mx-auto mb-3"
-								type="submit"
-							>
+							<Button className="py-3" type="submit">
 								View All Availabilities
 							</Button>
 						</Link>

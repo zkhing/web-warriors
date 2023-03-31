@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 850px;
 }
 
 .logo {
@@ -29,6 +29,7 @@ body {
 
 .btn {
   border-radius: 0;
+  text-align: center;
 }
 
 .logo-container {
