@@ -6,7 +6,7 @@ import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg
 
 function Footer() {
 	return (
-		<Container className="bg-light pt-4">
+		<div className="bg-light p-2 mt-4">
 			<h4 className="text-center"> Follow Us </h4>
 
 			<div className="d-flex justify-content-evenly fa-2x">
@@ -21,11 +21,11 @@ function Footer() {
 				</a>
 			</div>
 			<div className="d-flex justify-content-evenly fa-2x">
-				<h6>Contact us on admin@cyf.com</h6>
+				<h4>Contact us on admin@cyf.com</h4>
 			</div>
 
-			<p className="text-center">&copy; Copyright 2023 web-warriors. </p>
-		</Container>
+			<p className="text-center mt-3">&copy; Copyright 2023 web-warriors </p>
+		</div>
 	);
 }
 export default Footer;
