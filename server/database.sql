@@ -24,11 +24,11 @@ CREATE TABLE availabilities (
  ('@Raj', 'Rajamodi', 'Sadik', 'Rajamodi@example.com', 'WM4'),
  ('@Rama', 'Rama', 'Diallo', 'Ramssess@example.com', 'WM4');
 
- INSERT INTO availabilities (availabilityID,username, date, from_time, to_time)
+ INSERT INTO availabilities (username, date, from_time, to_time)
  VALUES 
- ('@Davood', '05-03-2023', '14:00','16:00'),
- ('@Sahar', '06-03-2023', '18:00', '19:00'),
- ('@Barry', '17-03-2023', '19:00', '19:30'),
- ('@Zaw', '17-03-2023', '19:00', '20:00'),
- ('Mik22', '20-03-2023', '22:00', '24:00'),
- ('Khess83', '20-03-2023', '22:00', '22:30');
+ ('@Davood', '2023-03-05', '14:00','16:00'),
+ ('@Sahar', '2023-03-06', '18:00', '19:00'),
+ ('@Barry', '2023-03-17', '19:00', '19:30'),
+ ('@Zaw', '2023-03-17', '19:00', '20:00'),
+ ('Mik22', '2023-03-20', '22:00', '24:00'),
+ ('Khess83', '2023-03-20', '22:00', '22:30');
