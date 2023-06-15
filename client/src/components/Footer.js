@@ -2,7 +2,11 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import {
+	faFacebook,
+	faInstagram,
+	faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
 function Footer() {
 	return (
@@ -10,13 +14,16 @@ function Footer() {
 			<h4 className="text-center"> Follow Us </h4>
 
 			<div className="d-flex justify-content-evenly fa-2x">
-				<a href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB">
+				<a
+					href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB"
+					target="_blank"
+				>
 					<FontAwesomeIcon icon={faFacebook} />
 				</a>
-				<a href="https://www.instagram.com/codeyourfuture_/">
+				<a href="https://www.instagram.com/codeyourfuture_/" target="_blank">
 					<FontAwesomeIcon icon={faInstagram} />
 				</a>
-				<a href="https://twitter.com/CodeYourFuture">
+				<a href="https://twitter.com/CodeYourFuture" target="_blank">
 					<FontAwesomeIcon icon={faTwitter} />
 				</a>
 			</div>
@@ -29,5 +36,3 @@ function Footer() {
 	);
 }
 export default Footer;
-
-
